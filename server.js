@@ -7,17 +7,16 @@ const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 
-fs.readFile("db/player1.json", { encoding: "utf-8" }, (err, data) => {
-  if (err) {
-    console.error(err);
-    return;
-  } else {
-    console.log(JSON.stringify(data));
-  }
-});
-
 app.get("/", (req, res) => {
-  res.send("hello world");
+  // res.send("hello world");
+  fs.readFile("db/player1.json", { encoding: "utf-8" }, (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    } else {
+      res.send(JSON.stringify(data));
+    }
+  });
 });
 
 app.post("/", (req, res) => {
