@@ -7,6 +7,15 @@ const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 
+fs.readFile("db/player1.json", { encoding: "utf-8" }, (err, data) => {
+  if (err) {
+    console.error(err);
+    return;
+  } else {
+    console.log(JSON.stringify(data));
+  }
+});
+
 app.get("/", (req, res) => {
   res.send("hello world");
 });
@@ -27,9 +36,9 @@ app.post("/logout", (req, res) => {
   res.send("POST request to logout user!");
 });
 
-app.get('/users/:id/', (req, res) => {
-   res.send(req.params)
- }) 
+app.get("/users/:id/", (req, res) => {
+  res.send(req.params);
+});
 
 app.all("/secret", (req, res, next) => {
   console.log("Accessing the secret section ...");
