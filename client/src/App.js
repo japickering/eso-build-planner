@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CharacterSlot from "./components/CharacterSlot";
 import "./App.css";
 
 export default class App extends Component {
@@ -35,18 +36,3 @@ export default class App extends Component {
     );
   }
 }
-
-const CharacterSlot = (props) => {
-
-  return (
-    <div>
-      <h3>
-        {props.name} Level {props.level} {props.race} {props.classType}
-      </h3>
-      <img className="banner" src={props.banner} alt={props.alliance} />
-      <p>Health: {props.health}</p>
-      <p>Stamina: {props.stamina}</p>
-      <p>Magicka: {props.magicka}</p>
-    </div>
-  );
-};

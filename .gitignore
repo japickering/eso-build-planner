@@ -18,8 +18,6 @@
 .env.test.local
 .env.production.local
 /.vscode
-
-db/*.json
 log.txt
 
 package-lock.json

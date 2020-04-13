@@ -1,0 +1,76 @@
+[
+  {
+    "charId": "1",
+    "name": "achilles",
+    "alliance": "ebonheart",
+    "banner": "ebonheart.png",
+    "level": "1",
+    "race": "nord",
+    "classType": "dragonknight",
+    "gender": "male",
+    "image": "nord-male.png",
+    "attributePoints": "64",
+    "health": "0",
+    "magicka": "0",
+    "stamina": "0",
+    "resistances": {
+      "physical": "100",
+      "spell": "0",
+      "disease": "0",
+      "frost": "50",
+      "shock": "0",
+      "oblivion": "0",
+      "poison": "0"
+    },
+    "penetration": {
+      "physical": "0",
+      "spell": "0"
+    },
+    "racialBonuses": {
+      "immuneToChilled": "100%",
+      "staminaRegen": "5%",
+      "weaponExpGain": "10%"
+    },
+    "armour": {
+      "head": { "name": "", "defence": "0" },
+      "shoulder": { "name": "", "defence": "0" },
+      "chest": { "name": "", "defence": "0" },
+      "belt": { "name": "", "defence": "0" },
+      "hands": { "name": "", "defence": "0" },
+      "legs": { "name": "", "defence": "0" },
+      "feet": { "name": "", "defence": "0" }
+    },
+    "weapons": {
+      "mainHand": { "name": "sword", "damage": "1", "range": "1" },
+      "offHand": { "name": "shield", "defence": "1" },
+      "backup": { "name": "bow", "damage": "1", "range": "20" }
+    },
+    "skillPoints": "1",
+    "slottedSkills": {
+      "earth": [
+        {
+          "name": "stonefist",
+          "active": true,
+          "rank": "1"
+        },
+        {
+          "name": "obsidian shield",
+          "active": true,
+          "rank": "1"
+        }
+      ],
+      "onehandshield": [
+        {
+          "name": "pierce",
+          "active": true,
+          "rank": "1"
+        },
+        {
+          "name": "shred",
+          "active": true,
+          "rank": "1"
+        }
+      ]
+    }
+  }
+]
