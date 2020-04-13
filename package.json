@@ -2,13 +2,14 @@
   "name": "eso-build-planner",
   "version": "1.0.0",
   "author": "James A Pickering",
-  "description": "",
+  "description": "ESO Build planner",
   "keywords": [],
   "scripts": {
     "client": "cd client && yarn start",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "server": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && yarn install && yarn install --only=dev --no-shrinkwrap && yarn run build"
   },
   "license": "ISC",
   "dependencies": {
