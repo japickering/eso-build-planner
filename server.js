@@ -7,14 +7,13 @@ const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  // res.send("hello world");
+app.get("/load", (req, res) => {
   fs.readFile("db/player1.json", { encoding: "utf-8" }, (err, data) => {
     if (err) {
       console.error(err);
       return;
     } else {
-      res.send(JSON.stringify(data));
+      res.send(JSON.stringify(data) );
     }
   });
 });
@@ -23,16 +22,16 @@ app.post("/", (req, res) => {
   res.send("POST request to the homepage");
 });
 
-app.get("/about", (req, res) => {
-  res.send("about");
-});
-
 app.post("/login", (req, res) => {
   res.send("POST request to login user!");
 });
 
 app.post("/logout", (req, res) => {
   res.send("POST request to logout user!");
+});
+
+app.get("/about", (req, res) => {
+  res.send("about");
 });
 
 app.get("/users/:id/", (req, res) => {
