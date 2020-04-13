@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CharacterSlot from "./components/Card";
+import Card from "./components/Card";
 import "./App.css";
 import "./Bar.css";
 
