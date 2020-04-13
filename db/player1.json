@@ -1,18 +1,18 @@
 [
   {
     "charId": "1",
-    "name": "achilles",
+    "name": "Achilles",
     "alliance": "ebonheart",
     "banner": "ebonheart.png",
     "level": "1",
-    "race": "nord",
-    "classType": "dragonknight",
+    "race": "greek",
+    "classType": "warrior",
     "gender": "male",
     "image": "nord-male.png",
     "attributePoints": "64",
     "health": "0",
-    "magicka": "0",
     "stamina": "0",
+    "magicka": "0",
     "resistances": {
       "physical": "100",
       "spell": "0",

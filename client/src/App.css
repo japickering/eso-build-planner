@@ -30,23 +30,42 @@ img {
   height: auto;
 }
 
-button, .btn {
+.btn {
   display: inline-block;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   margin: 4px;
   padding: 4px;
-  background-color: grey;
-  border: 1px solid grey;
+  background-color: green;
+  border: 1px solid green;
   border-radius: 4px;
   color: #eee;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-button:hover, .btn:hover {
+.btn.block {
+  width: 150px;
+  font-size: 14px;
+}
+
+.btn:focus,
+.btn:hover {
   background-color: darkgreen;
   border: 1px solid darkgreen;
+}
+
+.btn.danger,
+.btn.danger:focus,
+.btn.danger:hover {
+  background-color: darkred;
+}
+
+.btn[type="disabled"],
+.btn[type="disabled"]:hover {
+  background-color: grey;
+  border: 1px solid grey;
+  cursor: default;
 }
 
 .attribute-buttons {
@@ -75,9 +94,9 @@ button:hover, .btn:hover {
 
 .container h3 {
   margin-top: 10px;
-  font-size: 1.4em;
+  font-size: 1.2em;
   color: navy;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 
 .card {
@@ -87,50 +106,14 @@ button:hover, .btn:hover {
   max-width: 400px;
   margin: 10px 0;
   padding: 10px;
-  border: 1px double #EEE;
+  border: 1px double #eee;
   /* background-color: #eee; */
   border-radius: 5px;
   text-align: left;
 }
 
-.life-bar {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 400px;
-  height: 40px;
-  margin: 5px;
-  padding: 0;
-  border: 1px double darkred;
-  background-color: darkred;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  text-align: center;
-  opacity: 0.8;
-}
-
-.life-bar .inner {
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  margin: 0;
-  padding: 10px;
-  background-color: blue;
-  border: 1px solid blue;
-  color: white;
-  overflow-y: hidden;
-}
-
-.life-bar .inner.min {
-  width: 20%;
-}
-
-.life-bar .inner.half {
-  width: 50%;
-}
-
-.life-bar .inner.max {
-  width: 100%;
+.card-body,
+.card-actons {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
