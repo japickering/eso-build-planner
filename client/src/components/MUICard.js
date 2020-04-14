@@ -15,21 +15,17 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { blue } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+// import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 import StepSlider from "./StepSlider";
-import { capitalize } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 275,
     maxWidth: 480,
   },
-  header: {
-    textTransform: "capitalize",
-  },
   title: {
-    color: "#222"
+    color: "#222",
   },
   media: {
     backgroundSize: "contain",
@@ -52,19 +48,66 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MUICard(props) {
-  // console.log(props.resistances);
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const title = String(props.name + " Level " + props.level + " " + props.race + " " + props.classType);
+  const [expanded, setExpanded] = useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const title =
-    props.name + " " + props.level + " " + props.race + " " + props.classType;
+
+  const [value, setValue] = React.useState(0);
+  
+  const onSliderChange = (event, value) => {
+    const max = props.max;
+    if (value < 0) {
+      setValue(0);
+    }
+    else if (value > max) {
+      value = max;
+      setValue(value);
+    } 
+    else {
+      setValue(value);
+    }    
+  };
+
+  const [magicka, setMag] = React.useState(0);
+  const onMagSliderChange = (event, magicka) => {
+    const max = props.max;
+    if (magicka < 0) {
+      setMag(0);
+    }
+    else if (magicka > max) {
+      magicka = max;
+      setMag(magicka);
+    } 
+    else {
+      setMag(magicka);
+    }    
+  };
+
+  const [stamina, setStam] = React.useState(0);
+  const onStaminaSliderChange = (event, stamina) => {
+    const max = props.max;
+    if (stamina < 0) {
+      setStam(0);
+    }
+    else if (stamina > max) {
+      stamina = max;
+      setStam(stamina);
+    } 
+    else {
+      setStam(stamina);
+    }    
+  };
+
+  const onInputChange = (event) => {
+    setValue(event.target.value === "" ? "" : Number(event.target.value));
+  };
 
   return (
     <Card className={classes.root}>
       <CardHeader
-        className={classes.header}
         avatar={
           <Avatar aria-label="alliance" className={classes.avatar}>
             D
@@ -80,12 +123,34 @@ export default function MUICard(props) {
       />
 
       <CardContent>
-        <StepSlider title="Health" max={64} />
-        <StepSlider title="Magicka" max={64} />
-        <StepSlider title="Stamina" max={64} />
+        <StepSlider
+          title="Health"
+          max={props.max}
+          value={value}
+          onSliderChange={onSliderChange}
+          onInputChange={onInputChange}
+          aria-labelledby="mui-card"
+        />
+        <StepSlider
+          title="Magicka"
+          max={props.max}
+          value={magicka}
+          onSliderChange={onMagSliderChange}
+          onInputChange={onInputChange}
+          aria-labelledby="mui-card"
+        />
+        <StepSlider
+          title="Stamina"
+          max={props.max}
+          value={stamina}
+          onSliderChange={onStaminaSliderChange}
+          onInputChange={onInputChange}
+          aria-labelledby="mui-card"
+        />
       </CardContent>
 
       <CardActions disableSpacing>
+
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
