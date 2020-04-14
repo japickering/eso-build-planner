@@ -2,13 +2,12 @@
   {
     "charId": "1",
     "name": "Achilles",
-    "alliance": "ebonheart",
-    "banner": "ebonheart.png",
+    "alliance": "daggerfall",
+    "image": "daggerfall.png",
     "level": "1",
-    "race": "greek",
-    "classType": "warrior",
+    "race": "breton",
+    "classType": "dragonknight",
     "gender": "male",
-    "image": "nord-male.png",
     "attributePoints": "64",
     "health": "0",
     "stamina": "0",
@@ -27,18 +26,17 @@
       "spell": "0"
     },
     "racialBonuses": {
-      "immuneToChilled": "100%",
       "staminaRegen": "5%",
       "weaponExpGain": "10%"
     },
     "armour": {
-      "head": { "name": "", "defence": "0" },
-      "shoulder": { "name": "", "defence": "0" },
-      "chest": { "name": "", "defence": "0" },
-      "belt": { "name": "", "defence": "0" },
-      "hands": { "name": "", "defence": "0" },
-      "legs": { "name": "", "defence": "0" },
-      "feet": { "name": "", "defence": "0" }
+      "head": { "name": "head", "defence": "0" },
+      "shoulder": { "name": "shoulder", "defence": "0" },
+      "chest": { "name": "chest", "defence": "0" },
+      "belt": { "name": "belt", "defence": "0" },
+      "hands": { "name": "hands", "defence": "0" },
+      "legs": { "name": "legs", "defence": "0" },
+      "feet": { "name": "feet", "defence": "0" }
     },
     "weapons": {
       "mainHand": { "name": "sword", "damage": "1", "range": "1" },

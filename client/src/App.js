@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Card from "./components/Card";
+import MUICard from "./components/MUICard";
 import "./App.css";
-import "./Bar.css";
 
 export default class App extends Component {
   state = {
@@ -39,7 +38,7 @@ export default class App extends Component {
         <div className="container">
           <h3>Player characters found..</h3>
           {this.state.response !== "" && (
-            <Card {...this.state.response[0]} />
+            <MUICard {...this.state.response[0]} />
           )}
         </div>
       </div>
