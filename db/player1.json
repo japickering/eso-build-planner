@@ -2,10 +2,10 @@
   {
     "charId": "1",
     "name": "Achilles",
-    "alliance": "daggerfall",
-    "image": "daggerfall.png",
+    "alliance": "ebonheart",
+    "image": "ebonheart.png",
     "level": 1,
-    "race": "breton",
+    "race": "nord",
     "classType": "dragonknight",
     "gender": "male",
     "max": 64,
@@ -13,10 +13,10 @@
     "stamina": "0",
     "magicka": "0",
     "resistances": {
-      "physical": "100",
+      "physical": "0",
       "spell": "0",
       "disease": "0",
-      "frost": "50",
+      "frost": "0",
       "shock": "0",
       "oblivion": "0",
       "poison": "0"

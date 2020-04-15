@@ -9,6 +9,11 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+// import ListItemIcon from "@material-ui/core/ListItemIcon";
+// import ListItemText from "@material-ui/core/ListItemText";
+
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
@@ -21,6 +26,7 @@ import StepSlider from "./StepSlider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginTop: 10,
     minWidth: 275,
     maxWidth: 480,
   },
@@ -30,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   media: {
     backgroundSize: "contain",
     backgroundPositionX: 0,
-    paddingTop: "50%",
+    paddingTop: "40%",
   },
   expand: {
     transform: "rotate(0deg)",
@@ -49,60 +55,68 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MUICard(props) {
   const classes = useStyles();
-  const title = String(props.name + " Level " + props.level + " " + props.race + " " + props.classType);
+  const title = String(
+    props.name +
+      " Level " +
+      props.level +
+      " " +
+      props.race +
+      " " +
+      props.classType
+  );
   const [expanded, setExpanded] = useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const [value, setValue] = React.useState(0);
-  
-  const onSliderChange = (event, value) => {
-    const max = props.max;
-    if (value < 0) {
-      setValue(0);
-    }
-    else if (value > max) {
-      value = max;
-      setValue(value);
-    } 
-    else {
-      setValue(value);
-    }    
+  const [health, setValue] = React.useState(0);
+  const [magicka, setMag] = React.useState(0);
+  const [stamina, setStam] = React.useState(0);
+
+  const onInputChange = (event) => {
+    setValue(event.target.value === "" ? "" : Number(event.target.value));
+  };
+  const onMagInputChange = (event) => {
+    setMag(event.target.value === "" ? "" : Number(event.target.value));
+  };
+  const onStamInputChange = (event) => {
+    setStam(event.target.value === "" ? "" : Number(event.target.value));
   };
 
-  const [magicka, setMag] = React.useState(0);
+  const onSliderChange = (event, health) => {
+    const max = props.max;
+    if (health < 0) {
+      setValue(0);
+    } else if (health > max) {
+      health = max;
+      setValue(health);
+    } else {
+      setValue(health);
+    }
+  };
+
   const onMagSliderChange = (event, magicka) => {
     const max = props.max;
     if (magicka < 0) {
       setMag(0);
-    }
-    else if (magicka > max) {
+    } else if (magicka > max) {
       magicka = max;
       setMag(magicka);
-    } 
-    else {
+    } else {
       setMag(magicka);
-    }    
+    }
   };
 
-  const [stamina, setStam] = React.useState(0);
   const onStaminaSliderChange = (event, stamina) => {
     const max = props.max;
     if (stamina < 0) {
       setStam(0);
-    }
-    else if (stamina > max) {
+    } else if (stamina > max) {
       stamina = max;
       setStam(stamina);
-    } 
-    else {
+    } else {
       setStam(stamina);
-    }    
-  };
-
-  const onInputChange = (event) => {
-    setValue(event.target.value === "" ? "" : Number(event.target.value));
+    }
   };
 
   return (
@@ -123,34 +137,42 @@ export default function MUICard(props) {
       />
 
       <CardContent>
+        <Typography id="health-slider" gutterBottom>
+          Health
+        </Typography>
         <StepSlider
-          title="Health"
           max={props.max}
-          value={value}
+          value={health}
           onSliderChange={onSliderChange}
           onInputChange={onInputChange}
-          aria-labelledby="mui-card"
+          aria-labelledby="health-slider"
         />
+        <Typography id="magicka-slider" gutterBottom>
+          Magicka
+        </Typography>
         <StepSlider
-          title="Magicka"
           max={props.max}
           value={magicka}
           onSliderChange={onMagSliderChange}
-          onInputChange={onInputChange}
-          aria-labelledby="mui-card"
+          onInputChange={onMagInputChange}
+          aria-labelledby="magicka-slider"
         />
+        <Typography id="stamina-slider" gutterBottom>
+          Stamina
+        </Typography>
         <StepSlider
-          title="Stamina"
           max={props.max}
           value={stamina}
           onSliderChange={onStaminaSliderChange}
-          onInputChange={onInputChange}
-          aria-labelledby="mui-card"
+          onInputChange={onStamInputChange}
+          aria-labelledby="stamina-slider"
         />
       </CardContent>
 
       <CardActions disableSpacing>
-
+        <Button variant="outlined" onClick={handleExpandClick}>
+          view stats
+        </Button>
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
@@ -165,22 +187,24 @@ export default function MUICard(props) {
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Resistances:</Typography>
-          <Typography paragraph>
-            physical: {props.resistances.physical}
-            <br />
-            spell: {props.resistances.spell}
-            <br />
-            frost: {props.resistances.frost}
-            <br />
-            disease: {props.resistances.disease}
-            <br />
-            oblivion: {props.resistances.oblivion}
-            <br />
-            poison: {props.resistances.poison}
-            <br />
-            shock: {props.resistances.shock}
-          </Typography>
+          <Typography>Stats:</Typography>
+          <List>
+            <ListItem>health: {health}</ListItem>
+            <ListItem>magicka: {magicka}</ListItem>
+            <ListItem>stamina: {stamina}</ListItem>
+            <ListItem>physical penetration: {props.penetration.physical}</ListItem>
+            <ListItem>spell penetration: {props.penetration.spell}</ListItem>
+          </List>
+          <Typography>Resistances:</Typography>
+          <List>
+            <ListItem>physical: {props.resistances.physical}</ListItem>
+            <ListItem>spell: {props.resistances.spell}</ListItem>
+            <ListItem>frost: {props.resistances.frost}</ListItem>
+            <ListItem>disease: {props.resistances.disease}</ListItem>
+            <ListItem>oblivion: {props.resistances.oblivion}</ListItem>
+            <ListItem>poison: {props.resistances.poison}</ListItem>
+            <ListItem>shock: {props.resistances.shock}</ListItem>
+          </List>
         </CardContent>
       </Collapse>
     </Card>
