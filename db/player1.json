@@ -5,8 +5,8 @@
     "alliance": "ebonheart",
     "image": "ebonheart.png",
     "level": 1,
-    "race": "nord",
-    "classType": "dragonknight",
+    "race": "Nord",
+    "classType": "Dragonknight",
     "gender": "male",
     "max": 64,
     "health": "0",
@@ -29,15 +29,13 @@
       "staminaRegen": "5%",
       "weaponExpGain": "10%"
     },
-    "armour": {
-      "head": { "name": "head", "defence": "0" },
-      "shoulder": { "name": "shoulder", "defence": "0" },
-      "chest": { "name": "chest", "defence": "0" },
-      "belt": { "name": "belt", "defence": "0" },
-      "hands": { "name": "hands", "defence": "0" },
-      "legs": { "name": "legs", "defence": "0" },
-      "feet": { "name": "feet", "defence": "0" }
-    },
+    "head": { "name": "hood", "rating": "common", "bonus": 100 },
+    "shoulder": { "name": "epaulets", "rating": "common", "bonus": 100 },
+    "chest": { "name": "jerkin", "rating": "common", "bonus": 100 },
+    "belt": { "name": "belt", "rating": "common", "bonus": 100 },
+    "hands": { "name": "gloves", "rating": "common", "bonus": 100 },
+    "legs": { "name": "trousers", "rating": "common", "bonus": 100 },
+    "feet": { "name": "boots", "rating": "common", "bonus": 100 },
     "weapons": {
       "mainHand": { "name": "sword", "damage": "1", "range": "1" },
       "offHand": { "name": "shield", "defence": "1" },

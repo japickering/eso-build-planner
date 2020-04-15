@@ -13,22 +13,25 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 // import ListItemIcon from "@material-ui/core/ListItemIcon";
 // import ListItemText from "@material-ui/core/ListItemText";
+// import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
 import Avatar from "@material-ui/core/Avatar";
+// import ImageIcon from "@material-ui/icons/Image";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { blue } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-// import MoreVertIcon from "@material-ui/icons/MoreVert";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 import StepSlider from "./StepSlider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 10,
+    width: "100%",
     minWidth: 275,
-    maxWidth: 480,
+    maxWidth: 360,
   },
   title: {
     color: "#222",
@@ -37,6 +40,19 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "contain",
     backgroundPositionX: 0,
     paddingTop: "40%",
+  },
+  avatar: {
+    backgroundColor: blue[10],
+  },
+  content: {
+    padding: theme.spacing(4),
+  },
+  dark: {
+    backgroundColor: "#222",
+    color: "#fff",
+  },
+  underline: {
+    borderBottom: "1px solid whitesmoke",
   },
   expand: {
     transform: "rotate(0deg)",
@@ -47,9 +63,6 @@ const useStyles = makeStyles((theme) => ({
   },
   expandOpen: {
     transform: "rotate(180deg)",
-  },
-  avatar: {
-    backgroundColor: blue[10],
   },
 }));
 
@@ -119,6 +132,27 @@ export default function MUICard(props) {
     }
   };
 
+  const renderProps = (props) => {
+    let arr = [];
+    for (const key in props) {
+      if (props.hasOwnProperty(key)) {
+        let element = props[key];
+        arr.push({ label: key, value: element });
+      }
+    }
+    if (arr.length <= 0) {
+      return;
+    } else {
+      return arr.map((item) => {
+        return (
+          <ListItem>
+            {item.label}: {item.value}
+          </ListItem>
+        );
+      });
+    }
+  };
+
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -136,7 +170,7 @@ export default function MUICard(props) {
         title={props.alliance}
       />
 
-      <CardContent>
+      <CardContent className={classes.content}>
         <Typography id="health-slider" gutterBottom>
           Health
         </Typography>
@@ -186,24 +220,28 @@ export default function MUICard(props) {
       </CardActions>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography>Stats:</Typography>
+        <CardContent className={classes.dark}>
+          <Typography className={classes.underline}>Stats</Typography>
           <List>
             <ListItem>health: {health}</ListItem>
             <ListItem>magicka: {magicka}</ListItem>
             <ListItem>stamina: {stamina}</ListItem>
-            <ListItem>physical penetration: {props.penetration.physical}</ListItem>
+            <ListItem>
+              physical penetration: {props.penetration.physical}
+            </ListItem>
             <ListItem>spell penetration: {props.penetration.spell}</ListItem>
           </List>
-          <Typography>Resistances:</Typography>
+          <Typography className={classes.underline}>Resistances</Typography>
+          <List>{renderProps(props.resistances)}</List>
+          <Typography className={classes.underline}>Equipment</Typography>
           <List>
-            <ListItem>physical: {props.resistances.physical}</ListItem>
-            <ListItem>spell: {props.resistances.spell}</ListItem>
-            <ListItem>frost: {props.resistances.frost}</ListItem>
-            <ListItem>disease: {props.resistances.disease}</ListItem>
-            <ListItem>oblivion: {props.resistances.oblivion}</ListItem>
-            <ListItem>poison: {props.resistances.poison}</ListItem>
-            <ListItem>shock: {props.resistances.shock}</ListItem>
+            {renderProps(props.head)}
+            {renderProps(props.chest)}
+            {renderProps(props.shoulder)}
+            {renderProps(props.belt)}
+            {renderProps(props.gloves)}
+            {renderProps(props.legs)}
+            {renderProps(props.feet)}
           </List>
         </CardContent>
       </Collapse>

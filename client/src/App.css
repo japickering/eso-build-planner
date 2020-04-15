@@ -102,22 +102,3 @@ img {
   color: navy;
   /* text-transform: capitalize; */
 }
-
-.card {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 400px;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px double #eee;
-  /* background-color: #eee; */
-  border-radius: 5px;
-  text-align: left;
-}
-
-.card-body,
-.card-actons {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
