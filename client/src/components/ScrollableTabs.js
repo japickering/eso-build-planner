@@ -9,7 +9,8 @@ import ListItem from "@material-ui/core/ListItem";
 
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import HomeIcon from "@material-ui/icons/Home";
+// import HomeIcon from "@material-ui/icons/Home";
+import BarChartIcon from '@material-ui/icons/BarChart';
 import SettingsIcon from "@material-ui/icons/Settings";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import SvgIcon from "@material-ui/core/SvgIcon";
@@ -82,7 +83,7 @@ export default function ScrollableTabs(props) {
           <Tab
             label="Stats"
             {...setAttribs(0)}
-            icon={<HomeIcon color="primary" />}
+            icon={<BarChartIcon color="primary" />}
           />
           <Tab
             label="Resistances"
