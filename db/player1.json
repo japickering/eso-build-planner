@@ -9,25 +9,25 @@
     "classType": "Dragonknight",
     "gender": "male",
     "max": 64,
-    "health": "0",
-    "stamina": "0",
-    "magicka": "0",
+    "health": 0,
+    "stamina": 0,
+    "magicka": 0,
     "resistances": {
-      "physical": "0",
-      "spell": "0",
-      "disease": "0",
-      "frost": "0",
-      "shock": "0",
-      "oblivion": "0",
-      "poison": "0"
+      "physical": 0,
+      "spell": 0,
+      "disease": 0,
+      "frost": 0,
+      "oblivion": 0,
+      "poison": 0,
+      "shock": 0
     },
     "penetration": {
-      "physical": "0",
-      "spell": "0"
+      "physical": 0,
+      "spell": 0
     },
-    "racialBonuses": {
+    "racialBonus": {
       "staminaRegen": "5%",
-      "weaponExpGain": "10%"
+      "twoHandedWeaponXp": "10%"
     },
     "head": { "name": "hood", "rating": "common", "bonus": 100 },
     "shoulder": { "name": "epaulets", "rating": "common", "bonus": 100 },

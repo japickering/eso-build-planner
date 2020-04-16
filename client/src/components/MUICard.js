@@ -1,37 +1,35 @@
 import React, { useState } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
+// import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
 
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-// import ListItemIcon from "@material-ui/core/ListItemIcon";
-// import ListItemText from "@material-ui/core/ListItemText";
-// import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
-import Avatar from "@material-ui/core/Avatar";
-// import ImageIcon from "@material-ui/icons/Image";
-import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { blue } from "@material-ui/core/colors";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import Avatar from "@material-ui/core/Avatar";
+// import IconButton from "@material-ui/core/IconButton";
+// import Button from "@material-ui/core/Button";
+// import ImageIcon from "@material-ui/icons/Image";
+// import Collapse from "@material-ui/core/Collapse";
+// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+// import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 import StepSlider from "./StepSlider";
+import ScrollableTabs from "./ScrollableTabs";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: 10,
+    marginTop: 5,
     width: "100%",
     minWidth: 275,
-    maxWidth: 360,
+    maxWidth: 480,
   },
   title: {
     color: "#222",
@@ -39,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   media: {
     backgroundSize: "contain",
     backgroundPositionX: 0,
-    paddingTop: "40%",
+    paddingTop: "30%",
   },
   avatar: {
     backgroundColor: blue[10],
@@ -154,97 +152,65 @@ export default function MUICard(props) {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="alliance" className={classes.avatar}>
-            D
-          </Avatar>
-        }
-        title={title}
-      ></CardHeader>
+    <div className={classes.root}>
+      <Card>
+        <CardHeader
+          avatar={
+            <Avatar aria-label="alliance" className={classes.avatar}>
+              D
+            </Avatar>
+          }
+          title={title}
+        ></CardHeader>
 
-      <CardMedia
-        className={classes.media}
-        image={props.image}
-        title={props.alliance}
-      />
-
-      <CardContent className={classes.content}>
-        <Typography id="health-slider" gutterBottom>
-          Health
-        </Typography>
-        <StepSlider
-          max={props.max}
-          value={health}
-          onSliderChange={onSliderChange}
-          onInputChange={onInputChange}
-          aria-labelledby="health-slider"
+        <CardMedia
+          className={classes.media}
+          image={props.image}
+          title={props.alliance}
         />
-        <Typography id="magicka-slider" gutterBottom>
-          Magicka
-        </Typography>
-        <StepSlider
-          max={props.max}
-          value={magicka}
-          onSliderChange={onMagSliderChange}
-          onInputChange={onMagInputChange}
-          aria-labelledby="magicka-slider"
-        />
-        <Typography id="stamina-slider" gutterBottom>
-          Stamina
-        </Typography>
-        <StepSlider
-          max={props.max}
-          value={stamina}
-          onSliderChange={onStaminaSliderChange}
-          onInputChange={onStamInputChange}
-          aria-labelledby="stamina-slider"
-        />
-      </CardContent>
 
-      <CardActions disableSpacing>
-        <Button variant="outlined" onClick={handleExpandClick}>
-          view stats
-        </Button>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent className={classes.dark}>
-          <Typography className={classes.underline}>Stats</Typography>
-          <List>
-            <ListItem>health: {health}</ListItem>
-            <ListItem>magicka: {magicka}</ListItem>
-            <ListItem>stamina: {stamina}</ListItem>
-            <ListItem>
-              physical penetration: {props.penetration.physical}
-            </ListItem>
-            <ListItem>spell penetration: {props.penetration.spell}</ListItem>
-          </List>
-          <Typography className={classes.underline}>Resistances</Typography>
-          <List>{renderProps(props.resistances)}</List>
-          <Typography className={classes.underline}>Equipment</Typography>
-          <List>
-            {renderProps(props.head)}
-            {renderProps(props.chest)}
-            {renderProps(props.shoulder)}
-            {renderProps(props.belt)}
-            {renderProps(props.gloves)}
-            {renderProps(props.legs)}
-            {renderProps(props.feet)}
-          </List>
+        <CardContent className={classes.content}>
+          <Typography id="health-slider" gutterBottom>
+            Health
+          </Typography>
+          <StepSlider
+            max={props.max}
+            value={health}
+            onSliderChange={onSliderChange}
+            onInputChange={onInputChange}
+            aria-labelledby="health-slider"
+          />
+          <Typography id="magicka-slider" gutterBottom>
+            Magicka
+          </Typography>
+          <StepSlider
+            max={props.max}
+            value={magicka}
+            onSliderChange={onMagSliderChange}
+            onInputChange={onMagInputChange}
+            aria-labelledby="magicka-slider"
+          />
+          <Typography id="stamina-slider" gutterBottom>
+            Stamina
+          </Typography>
+          <StepSlider
+            max={props.max}
+            value={stamina}
+            onSliderChange={onStaminaSliderChange}
+            onInputChange={onStamInputChange}
+            aria-labelledby="stamina-slider"
+          />
         </CardContent>
-      </Collapse>
-    </Card>
+      </Card>
+
+      <ScrollableTabs
+        health={health}
+        magicka={magicka}
+        stamina={stamina}
+        penetration={props.penetration}
+        resistances={props.resistances}
+        racialBonus={props.racialBonus}
+      />
+    </div>
   );
 }
