@@ -12,8 +12,8 @@
     "health": { "max": 0, "recovery": 10 },
     "stamina": { "max": 0, "recovery": 0 },
     "magicka": { "max": 0, "recovery": 0 },
-    "spell": { "damage": 0, "critical": 0 },
-    "weapon": { "damage": 0, "critical": 0 },
+    "spell": { "spell damage": 0, "spell critical": 0 },
+    "weapon": { "weapon damage": 0, "weapon critical": 0 },
     "resistances": {
       "critical": 0,
       "physical": 0,
@@ -40,41 +40,28 @@
     "legs": { "name": "trousers", "rating": "common", "bonus": 100 },
     "feet": { "name": "boots", "rating": "common", "bonus": 100 },
     "weapons": {
-      "mainHand": {
-        "image": "dragonknight_standard.png",
-        "name": "sword",
-        "damage": "1",
+      "main": {
+        "image": "dragonknight_embers.png",
+        "title": "sword of embers",
+        "cast": "instant",
+        "damage": "10",
         "range": "5"
       },
-      "offHand": { "name": "shield", "defence": "1" },
-      "backup": { "name": "bow", "damage": "1", "range": "20" }
+      "offHand": {
+        "image": "ability_1handed_003.png",
+        "title": "shield",
+        "cast": "instant",
+        "damage": "10",
+        "range": "5"
+      },
+      "backup": {
+        "image": "ability_bow_001.png",
+        "title": "bow",
+        "cast": "instant",
+        "damage": "10",
+        "range": "35"
+      }
     },
-    "skillPoints": "1",
-    "slottedSkills": {
-      "earth": [
-        {
-          "name": "stonefist",
-          "active": true,
-          "rank": "1"
-        },
-        {
-          "name": "obsidian shield",
-          "active": true,
-          "rank": "1"
-        }
-      ],
-      "onehandshield": [
-        {
-          "name": "pierce",
-          "active": true,
-          "rank": "1"
-        },
-        {
-          "name": "shred",
-          "active": true,
-          "rank": "1"
-        }
-      ]
-    }
+    "skillPoints": "1"
   }
 ]

@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 5,
     width: "100%",
     minWidth: 275,
-    maxWidth: 600,
+    maxWidth: 500,
   },
   title: {
     color: "#222",
@@ -77,10 +77,10 @@ export default function MUICard(props) {
       " " +
       props.classType
   );
-  const [expanded, setExpanded] = useState(false);
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  // const [expanded, setExpanded] = useState(false);
+  // const handleExpandClick = () => {
+  //   setExpanded(!expanded);
+  // };
 
   const [health, setValue] = React.useState(0);
   const [magicka, setMag] = React.useState(0);
@@ -131,27 +131,6 @@ export default function MUICard(props) {
       setStam(stamina);
     }
   };
-
-  // const renderProps = (props) => {
-  //   let arr = [];
-  //   for (const key in props) {
-  //     if (props.hasOwnProperty(key)) {
-  //       let element = props[key];
-  //       arr.push({ label: key, value: element });
-  //     }
-  //   }
-  //   if (arr.length <= 0) {
-  //     return;
-  //   } else {
-  //     return arr.map((item) => {
-  //       return (
-  //         <ListItem>
-  //           {item.label}: {item.value}
-  //         </ListItem>
-  //       );
-  //     });
-  //   }
-  // };
 
   return (
     <div className={classes.root}>
