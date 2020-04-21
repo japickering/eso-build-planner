@@ -12,7 +12,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 
 import Typography from "@material-ui/core/Typography";
-import { blue } from "@material-ui/core/colors";
+import { red } from "@material-ui/core/colors";
 import Avatar from "@material-ui/core/Avatar";
 // import IconButton from "@material-ui/core/IconButton";
 // import Button from "@material-ui/core/Button";
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "30%",
   },
   avatar: {
-    backgroundColor: blue[10],
+    backgroundColor: red[500],
   },
   content: {
     padding: theme.spacing(4),
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MUICard(props) {
   // console.log(props.weapons);
-  
+
   const classes = useStyles();
   const title = String(
     props.name +
@@ -82,7 +82,7 @@ export default function MUICard(props) {
   //   setExpanded(!expanded);
   // };
 
-  const [health, setValue] = React.useState(0);
+  const [health, setValue] = React.useState(props.health.max);
   const [magicka, setMag] = React.useState(0);
   const [stamina, setStam] = React.useState(0);
 
@@ -135,20 +135,13 @@ export default function MUICard(props) {
   return (
     <div className={classes.root}>
       <Card>
-        <CardHeader
-          avatar={
-            <Avatar aria-label="alliance" className={classes.avatar}>
-              {props.classType.charAt(0)}
-            </Avatar>
-          }
-          title={title}
-        ></CardHeader>
+        <CardHeader title={title}></CardHeader>
 
-        <CardMedia
+        {/* <CardMedia
           className={classes.media}
           image={props.image}
           title={props.alliance}
-        />
+        /> */}
 
         <CardContent className={classes.content}>
           <Typography id="health-slider" gutterBottom>
@@ -192,6 +185,8 @@ export default function MUICard(props) {
         stamina={stamina}
         staminaRecovery={props.stamina.recovery}
         spell={props.spell}
+        gear={props.gear}
+        jewellery={props.jewellery}
         weapon={props.weapon}
         weapons={props.weapons}
         penetration={props.penetration}

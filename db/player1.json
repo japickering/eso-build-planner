@@ -9,7 +9,7 @@
     "classType": "Dragonknight",
     "gender": "male",
     "max": 64,
-    "health": { "max": 0, "recovery": 10 },
+    "health": { "max": 64, "recovery": 10 },
     "stamina": { "max": 0, "recovery": 0 },
     "magicka": { "max": 0, "recovery": 0 },
     "spell": { "spell damage": 0, "spell critical": 0 },
@@ -32,34 +32,133 @@
       "staminaRegen": "5%",
       "twoHandedWeaponXp": "10%"
     },
-    "head": { "name": "hood", "rating": "common", "bonus": 100 },
-    "shoulder": { "name": "epaulets", "rating": "common", "bonus": 100 },
-    "chest": { "name": "jerkin", "rating": "common", "bonus": 100 },
-    "belt": { "name": "belt", "rating": "common", "bonus": 100 },
-    "hands": { "name": "gloves", "rating": "common", "bonus": 100 },
-    "legs": { "name": "trousers", "rating": "common", "bonus": 100 },
-    "feet": { "name": "boots", "rating": "common", "bonus": 100 },
+    "gear": {
+      "head": {
+        "image": "buoyantarmiger_light_head_a.png",
+        "title": "helmet",
+        "type": "gear",
+        "quality": 1,
+        "bonus": 10,
+        "style": "buoyant armiger",
+        "stat": "health"
+      },
+      "shoulder": {
+        "image": "buoyantarmiger_medium_shoulders_a.png",
+        "type": "gear",
+        "title": "guards",
+        "quality": 1,
+        "bonus": 10,
+        "style": "buoyant armiger",
+        "stat": "health"
+      },
+      "chest": {
+        "image": "buoyantarmiger_medium_chest_a.png",
+        "type": "gear",
+        "title": "jacket",
+        "quality": 1,
+        "bonus": 10,
+        "style": "buoyant armiger",
+        "stat": "health"
+      },
+      "belt": {
+        "image": "ebonheart_medium_waist_a.png",
+        "type": "gear",
+        "title": "belt",
+        "quality": 1,
+        "bonus": 10,
+        "style": "ebonheart",
+        "stat": "health"
+      },
+      "hands": {
+        "image": "buoyantarmiger_heavy_hand_a.png",
+        "type": "gear",
+        "title": "gauntlets",
+        "quality": 1,
+        "bonus": 10,
+        "style": "buoyant armiger",
+        "stat": "health"
+      },
+      "legs": {
+        "image": "buoyantarmiger_light_legs_a.png",
+        "type": "gear",
+        "title": "guards",
+        "quality": 1,
+        "bonus": 10,
+        "style": "buoyant armiger",
+        "stat": "health"
+      },
+      "feet": {
+        "image": "buoyantarmiger_medium_feet_a.png",
+        "type": "gear",
+        "title": "boots",
+        "quality": 1,
+        "bonus": 10,
+        "style": "buoyant armiger",
+        "stat": "health"
+      }
+    },
+    "jewellery": {
+      "necklace": {
+        "image": "ring_emerald.png",
+        "title": "necklace",
+        "type": "jewellery",
+        "quality": 1,
+        "bonus": 10,
+        "style": "shacklebreaker",
+        "stat": "health"
+      },
+      "ring1": {
+        "image": "ring_emerald.png",
+        "title": "ring",
+        "type": "jewellery",
+        "quality": 1,
+        "bonus": 10,
+        "style": "shacklebreaker",
+        "stat": "health"
+      },
+      "ring2": {
+        "image": "ring_emerald.png",
+        "title": "ring",
+        "type": "jewellery",
+        "quality": 1,
+        "bonus": 10,
+        "style": "shacklebreaker",
+        "stat": "health"
+      }
+    },
     "weapons": {
       "main": {
         "image": "dragonknight_embers.png",
-        "title": "sword of embers",
+        "type": "weapon",
+        "title": "sword",
+        "quality": 1,
         "cast": "instant",
         "damage": "10",
-        "range": "5"
+        "range": "5",
+        "style": "shacklebreaker",
+        "stat": "fire"
       },
       "offHand": {
         "image": "ability_1handed_003.png",
+        "type": "weapon",
         "title": "shield",
+        "quality": 1,
         "cast": "instant",
         "damage": "10",
-        "range": "5"
+        "range": "5",
+        "style": "shacklebreaker",
+        "stat": "health"
       },
       "backup": {
-        "image": "ability_bow_001.png",
+        "image": "ability_bow_002_b.png",
+        "type": "weapon",
         "title": "bow",
+        "quality": 1,
         "cast": "instant",
         "damage": "10",
-        "range": "35"
+        "range": "35",
+        "style": "shacklebreaker",
+        "stat": "health"
       }
     },
     "skillPoints": "1"
