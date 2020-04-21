@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 5,
     width: "100%",
     minWidth: 275,
-    maxWidth: 480,
+    maxWidth: 600,
   },
   title: {
     color: "#222",
@@ -65,6 +65,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MUICard(props) {
+  // console.log(props.weapons);
+  
   const classes = useStyles();
   const title = String(
     props.name +
@@ -96,7 +98,7 @@ export default function MUICard(props) {
 
   const onSliderChange = (event, health) => {
     const max = props.max;
-    if (health < 0) {
+    if (health <= 0) {
       setValue(0);
     } else if (health > max) {
       health = max;
@@ -108,7 +110,7 @@ export default function MUICard(props) {
 
   const onMagSliderChange = (event, magicka) => {
     const max = props.max;
-    if (magicka < 0) {
+    if (magicka <= 0) {
       setMag(0);
     } else if (magicka > max) {
       magicka = max;
@@ -120,7 +122,7 @@ export default function MUICard(props) {
 
   const onStaminaSliderChange = (event, stamina) => {
     const max = props.max;
-    if (stamina < 0) {
+    if (stamina <= 0) {
       setStam(0);
     } else if (stamina > max) {
       stamina = max;
@@ -130,26 +132,26 @@ export default function MUICard(props) {
     }
   };
 
-  const renderProps = (props) => {
-    let arr = [];
-    for (const key in props) {
-      if (props.hasOwnProperty(key)) {
-        let element = props[key];
-        arr.push({ label: key, value: element });
-      }
-    }
-    if (arr.length <= 0) {
-      return;
-    } else {
-      return arr.map((item) => {
-        return (
-          <ListItem>
-            {item.label}: {item.value}
-          </ListItem>
-        );
-      });
-    }
-  };
+  // const renderProps = (props) => {
+  //   let arr = [];
+  //   for (const key in props) {
+  //     if (props.hasOwnProperty(key)) {
+  //       let element = props[key];
+  //       arr.push({ label: key, value: element });
+  //     }
+  //   }
+  //   if (arr.length <= 0) {
+  //     return;
+  //   } else {
+  //     return arr.map((item) => {
+  //       return (
+  //         <ListItem>
+  //           {item.label}: {item.value}
+  //         </ListItem>
+  //       );
+  //     });
+  //   }
+  // };
 
   return (
     <div className={classes.root}>
@@ -157,7 +159,7 @@ export default function MUICard(props) {
         <CardHeader
           avatar={
             <Avatar aria-label="alliance" className={classes.avatar}>
-              D
+              {props.classType.charAt(0)}
             </Avatar>
           }
           title={title}
@@ -205,8 +207,14 @@ export default function MUICard(props) {
 
       <ScrollableTabs
         health={health}
+        healthRecovery={props.health.recovery}
         magicka={magicka}
+        magickaRecovery={props.magicka.recovery}
         stamina={stamina}
+        staminaRecovery={props.stamina.recovery}
+        spell={props.spell}
+        weapon={props.weapon}
+        weapons={props.weapons}
         penetration={props.penetration}
         resistances={props.resistances}
         racialBonus={props.racialBonus}

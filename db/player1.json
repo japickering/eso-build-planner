@@ -4,15 +4,18 @@
     "name": "Achilles",
     "alliance": "ebonheart",
     "image": "ebonheart.png",
-    "level": 1,
+    "level": 50,
     "race": "Nord",
     "classType": "Dragonknight",
     "gender": "male",
     "max": 64,
-    "health": 0,
-    "stamina": 0,
-    "magicka": 0,
+    "health": { "max": 0, "recovery": 10 },
+    "stamina": { "max": 0, "recovery": 0 },
+    "magicka": { "max": 0, "recovery": 0 },
+    "spell": { "damage": 0, "critical": 0 },
+    "weapon": { "damage": 0, "critical": 0 },
     "resistances": {
+      "critical": 0,
       "physical": 0,
       "spell": 0,
       "disease": 0,
@@ -37,7 +40,12 @@
     "legs": { "name": "trousers", "rating": "common", "bonus": 100 },
     "feet": { "name": "boots", "rating": "common", "bonus": 100 },
     "weapons": {
-      "mainHand": { "name": "sword", "damage": "1", "range": "1" },
+      "mainHand": {
+        "image": "dragonknight_standard.png",
+        "name": "sword",
+        "damage": "1",
+        "range": "5"
+      },
       "offHand": { "name": "shield", "defence": "1" },
       "backup": { "name": "bow", "damage": "1", "range": "20" }
     },
