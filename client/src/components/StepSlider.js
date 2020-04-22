@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Slider from "@material-ui/core/Slider";
 import Input from "@material-ui/core/Input";
-// import VolumeUp from '@material-ui/icons/VolumeUp';
 
 const useStyles = makeStyles({
   root: {
@@ -32,7 +31,6 @@ export default function StepSlider(props) {
       <Grid container spacing={2} alignItems="center">
         <Grid item xs>
           <Slider
-            defaultValue={0}
             value={props.value}
             onChange={props.onSliderChange}
             onBlur={handleBlur(props.max)}
@@ -49,7 +47,7 @@ export default function StepSlider(props) {
             inputProps={{
               step: 1,
               min: 0,
-              max: 64,
+              max: props.max,
               type: "number",
               "aria-labelledby": "input-slider",
             }}

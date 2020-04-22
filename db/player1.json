@@ -4,14 +4,16 @@
     "name": "Achilles",
     "alliance": "ebonheart",
     "image": "ebonheart.png",
-    "level": 50,
+    "level": 1,
+    "maxLevel": 50,
     "race": "Nord",
     "classType": "Dragonknight",
     "gender": "male",
     "max": 64,
-    "health": { "max": 64, "recovery": 10 },
-    "stamina": { "max": 0, "recovery": 0 },
-    "magicka": { "max": 0, "recovery": 0 },
+    "healthRecovery": 0,
+    "magickaRecovery": 0,
+    "staminaRecovery": 0,
+    "maxRecovery": 2000,
     "spell": { "spell damage": 0, "spell critical": 0 },
     "weapon": { "weapon damage": 0, "weapon critical": 0 },
     "resistances": {
@@ -30,14 +32,14 @@
     },
     "racialBonus": {
       "staminaRegen": "5%",
-      "twoHandedWeaponXp": "10%"
+      "weaponXp": "10%"
     },
     "gear": {
       "head": {
         "image": "buoyantarmiger_light_head_a.png",
         "title": "helmet",
         "type": "gear",
-        "quality": 1,
+        "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
         "stat": "health"
@@ -46,7 +48,7 @@
         "image": "buoyantarmiger_medium_shoulders_a.png",
         "type": "gear",
         "title": "guards",
-        "quality": 1,
+        "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
         "stat": "health"
@@ -55,7 +57,7 @@
         "image": "buoyantarmiger_medium_chest_a.png",
         "type": "gear",
         "title": "jacket",
-        "quality": 1,
+        "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
         "stat": "health"
@@ -64,7 +66,7 @@
         "image": "ebonheart_medium_waist_a.png",
         "type": "gear",
         "title": "belt",
-        "quality": 1,
+        "quality": "common",
         "bonus": 10,
         "style": "ebonheart",
         "stat": "health"
@@ -73,7 +75,7 @@
         "image": "buoyantarmiger_heavy_hand_a.png",
         "type": "gear",
         "title": "gauntlets",
-        "quality": 1,
+        "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
         "stat": "health"
@@ -82,7 +84,7 @@
         "image": "buoyantarmiger_light_legs_a.png",
         "type": "gear",
         "title": "guards",
-        "quality": 1,
+        "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
         "stat": "health"
@@ -91,7 +93,7 @@
         "image": "buoyantarmiger_medium_feet_a.png",
         "type": "gear",
         "title": "boots",
-        "quality": 1,
+        "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
         "stat": "health"
@@ -102,7 +104,7 @@
         "image": "ring_emerald.png",
         "title": "necklace",
         "type": "jewellery",
-        "quality": 1,
+        "quality": "common",
         "bonus": 10,
         "style": "shacklebreaker",
         "stat": "health"
@@ -111,7 +113,7 @@
         "image": "ring_emerald.png",
         "title": "ring",
         "type": "jewellery",
-        "quality": 1,
+        "quality": "common",
         "bonus": 10,
         "style": "shacklebreaker",
         "stat": "health"
@@ -120,7 +122,7 @@
         "image": "ring_emerald.png",
         "title": "ring",
         "type": "jewellery",
-        "quality": 1,
+        "quality": "common",
         "bonus": 10,
         "style": "shacklebreaker",
         "stat": "health"
@@ -131,7 +133,7 @@
         "image": "dragonknight_embers.png",
         "type": "weapon",
         "title": "sword",
-        "quality": 1,
+        "quality": "common",
         "cast": "instant",
         "damage": "10",
         "range": "5",
@@ -142,7 +144,7 @@
         "image": "ability_1handed_003.png",
         "type": "weapon",
         "title": "shield",
-        "quality": 1,
+        "quality": "common",
         "cast": "instant",
         "damage": "10",
         "range": "5",
@@ -153,7 +155,7 @@
         "image": "ability_bow_002_b.png",
         "type": "weapon",
         "title": "bow",
-        "quality": 1,
+        "quality": "common",
         "cast": "instant",
         "damage": "10",
         "range": "35",

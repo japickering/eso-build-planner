@@ -36,7 +36,7 @@ export default class App extends Component {
           <h1>ESO Character Build Planner</h1>
         </header>
         <div className="container">
-          <h3>Results found..</h3>
+          <p>Results found..</p>
           {this.state.response !== "" && (
             <MUICard {...this.state.response[0]} />
           )}

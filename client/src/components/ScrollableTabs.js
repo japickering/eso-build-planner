@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
@@ -11,8 +10,6 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-// import ListItemIcon from "@material-ui/core/ListItemIcon";
-// import ListItemText from "@material-ui/core/ListItemText";
 
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -25,7 +22,6 @@ import SettingsIcon from "@material-ui/icons/Settings";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // flexGrow: 1,
     width: "100%",
   },
   gridList: {
@@ -39,29 +35,27 @@ const useStyles = makeStyles((theme) => ({
     outline: 0,
     cursor: "pointer",
   },
-  tooltipImage: {
-    border: 0,
-  },
   tooltip: {
-    display: "block",
     width: "100%",
-    margin: 0,
-    padding: 4,
+    marginBottom: 5,
+    display: "flex",
+    flexDirection: "row",
+    justifyItems: "space-between",
     backgroundColor: "black",
-    borderColor: "black",
     color: "#fff",
     textTransform: "capitalize",
-    cursor: "zoom-out"
+    cursor: "zoom-out",
+  },
+  column: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  column2: {
+    width: "70%",
+    display: "flex",
+    flexDirection: "column",
   },
 }));
-
-// function HomeIcon(props) {
-//   return (
-//     <SvgIcon {...props}>
-//       <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-//     </SvgIcon>
-//   );
-// }
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -96,9 +90,9 @@ function setAttribs(index) {
 export default function ScrollableTabs(props) {
   // console.log(props);
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const [tooltip, setTooltip] = React.useState("");
-  const [image, setImage] = React.useState("");
+  const [value, setValue] = useState(0);
+  const [tooltip, setTooltip] = useState("");
+  const [image, setImage] = useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -111,11 +105,11 @@ export default function ScrollableTabs(props) {
         obj.title +
         " of " +
         obj.stat +
-        ", cast time: " +
+        " cast time: " +
         obj.cast +
-        ", damage: " +
+        " damage: " +
         obj.damage +
-        ", range: " +
+        " range: " +
         obj.range +
         " metres";
     } else {
@@ -125,14 +119,12 @@ export default function ScrollableTabs(props) {
         obj.title +
         " of " +
         obj.stat +
-        ", quality: " +
-        obj.quality +
-        ", bonus: " +
-        obj.bonus;
+        " + " +
+        obj.bonus +
+        " quality: " +
+        obj.quality;
     }
-    // if(obj.image !== ""){
     setImage(obj.image);
-    // }
     setTooltip(str);
   };
 
@@ -156,6 +148,7 @@ export default function ScrollableTabs(props) {
                 className={classes.button}
                 onClick={() => {
                   onIconClick(props);
+                  window.scrollTo(0, 240);
                 }}
               >
                 <img src={item.value} alt="skill icon" />
@@ -214,30 +207,9 @@ export default function ScrollableTabs(props) {
           scrollButtons="auto"
           aria-label="attributes"
         >
-          <Tab
-            label="Stats"
-            onClick={() => {
-              window.scrollTo(0, 400);
-            }}
-            {...setAttribs(0)}
-            icon={<BarChartIcon />}
-          />
-          <Tab
-            label="Resistances"
-            onClick={() => {
-              window.scrollTo(0, 400);
-            }}
-            {...setAttribs(1)}
-            icon={<SettingsIcon />}
-          />
-          <Tab
-            label="Equipment"
-            onClick={() => {
-              window.scrollTo(0, 400);
-            }}
-            {...setAttribs(2)}
-            icon={<AccountBoxIcon />}
-          />
+          <Tab label="Stats" {...setAttribs(0)} icon={<BarChartIcon />} />
+          <Tab label="Resistances" {...setAttribs(1)} icon={<SettingsIcon />} />
+          <Tab label="Equipment" {...setAttribs(2)} icon={<AccountBoxIcon />} />
         </Tabs>
       </Paper>
       <TabPanel value={value} index={0}>
@@ -254,7 +226,6 @@ export default function ScrollableTabs(props) {
             <Grid item>
               {renderListProps(props.spell)}
               {renderListProps(props.weapon)}
-              {renderListProps(props.racialBonus)}
             </Grid>
           </Grid>
         </List>
@@ -266,21 +237,19 @@ export default function ScrollableTabs(props) {
 
       <TabPanel value={value} index={2}>
         {tooltip !== "" && (
-          <div
-            className={classes.tooltip}
-            onClick={() => {
-              setTooltip("");
-            }}
-          >
-            <Grid container>
-              <Grid item>
-                <img className={classes.tooltipImage} src={image} alt="icon" />
-              </Grid>
-              <Grid item>{tooltip}</Grid>
-            </Grid>
+          <div className={classes.tooltip}>
+            <div
+              className={classes.column}
+              onClick={() => {
+                setTooltip("");
+              }}
+            >
+              <img src={image} alt="icon" />
+            </div>
+            <div className={classes.column2}>{tooltip}</div>
           </div>
         )}
-        <GridList cellHeight={70} cols={3} className={classes.gridList}>
+        <GridList cellHeight={80} cols={3} className={classes.gridList}>
           {renderGridTile(props.gear.head)}
           {renderGridTile(props.gear.shoulder)}
           {renderGridTile(props.gear.chest)}

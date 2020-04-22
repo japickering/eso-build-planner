@@ -1,28 +1,26 @@
 import React, { useState } from "react";
+import StepSlider from "./StepSlider";
+import ScrollableTabs from "./ScrollableTabs";
 
 import { makeStyles } from "@material-ui/core/styles";
 // import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+// import CardMedia from "@material-ui/core/CardMedia";
+// import CardActions from "@material-ui/core/CardActions";
+// import List from "@material-ui/core/List";
+// import ListItem from "@material-ui/core/ListItem";
 
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
-import Avatar from "@material-ui/core/Avatar";
+// import Avatar from "@material-ui/core/Avatar";
 // import IconButton from "@material-ui/core/IconButton";
 // import Button from "@material-ui/core/Button";
 // import ImageIcon from "@material-ui/icons/Image";
 // import Collapse from "@material-ui/core/Collapse";
 // import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // import MoreVertIcon from "@material-ui/icons/MoreVert";
-
-import StepSlider from "./StepSlider";
-import ScrollableTabs from "./ScrollableTabs";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +29,9 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 275,
     maxWidth: 500,
   },
-  title: {
+  header: {
+    padding: theme.spacing(2),
+    fontSize: 14,
     color: "#222",
   },
   media: {
@@ -43,14 +43,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: red[500],
   },
   content: {
-    padding: theme.spacing(4),
+    padding: theme.spacing(2),
   },
   dark: {
     backgroundColor: "#222",
     color: "#fff",
-  },
-  underline: {
-    borderBottom: "1px solid whitesmoke",
   },
   expand: {
     transform: "rotate(0deg)",
@@ -66,27 +63,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MUICard(props) {
   // console.log(props.weapons);
-
   const classes = useStyles();
-  const title = String(
-    props.name +
-      " Level " +
-      props.level +
-      " " +
-      props.race +
-      " " +
-      props.classType
-  );
+  const [level, setLevel] = useState(1);
+  const [health, setValue] = useState(props.max);
+  const [magicka, setMag] = useState(0);
+  const [stamina, setStam] = useState(0);
   // const [expanded, setExpanded] = useState(false);
   // const handleExpandClick = () => {
   //   setExpanded(!expanded);
   // };
 
-  const [health, setValue] = React.useState(props.health.max);
-  const [magicka, setMag] = React.useState(0);
-  const [stamina, setStam] = React.useState(0);
-
-  const onInputChange = (event) => {
+  const title = String(
+    props.name + " Level " + level + " " + props.race + " " + props.classType
+  );
+  const onLevelInputChange = (event) => {
+    setLevel(event.target.value === "" ? "" : Number(event.target.value));
+  };
+  const onHealthInputChange = (event) => {
     setValue(event.target.value === "" ? "" : Number(event.target.value));
   };
   const onMagInputChange = (event) => {
@@ -96,7 +89,19 @@ export default function MUICard(props) {
     setStam(event.target.value === "" ? "" : Number(event.target.value));
   };
 
-  const onSliderChange = (event, health) => {
+  const onLevelSliderChange = (event, level) => {
+    const max = props.maxLevel;
+    if (level <= 0) {
+      setLevel(1);
+    } else if (level > max) {
+      level = max;
+      setLevel(level);
+    } else {
+      setLevel(level);
+    }
+  };
+
+  const onHealthSliderChange = (event, health) => {
     const max = props.max;
     if (health <= 0) {
       setValue(0);
@@ -135,23 +140,28 @@ export default function MUICard(props) {
   return (
     <div className={classes.root}>
       <Card>
-        <CardHeader title={title}></CardHeader>
-
-        {/* <CardMedia
-          className={classes.media}
-          image={props.image}
-          title={props.alliance}
-        /> */}
+        <CardHeader className={classes.header} title={title}></CardHeader>
 
         <CardContent className={classes.content}>
+          <h2>Attributes</h2>
+          <Typography id="level-slider" gutterBottom>
+            Level
+          </Typography>
+          <StepSlider
+            max={props.maxLevel}
+            value={level}
+            onSliderChange={onLevelSliderChange}
+            onInputChange={onLevelInputChange}
+            aria-labelledby="level-slider"
+          />
           <Typography id="health-slider" gutterBottom>
             Health
           </Typography>
           <StepSlider
             max={props.max}
             value={health}
-            onSliderChange={onSliderChange}
-            onInputChange={onInputChange}
+            onSliderChange={onHealthSliderChange}
+            onInputChange={onHealthInputChange}
             aria-labelledby="health-slider"
           />
           <Typography id="magicka-slider" gutterBottom>
@@ -178,20 +188,10 @@ export default function MUICard(props) {
       </Card>
 
       <ScrollableTabs
+        {...props}
         health={health}
-        healthRecovery={props.health.recovery}
         magicka={magicka}
-        magickaRecovery={props.magicka.recovery}
         stamina={stamina}
-        staminaRecovery={props.stamina.recovery}
-        spell={props.spell}
-        gear={props.gear}
-        jewellery={props.jewellery}
-        weapon={props.weapon}
-        weapons={props.weapons}
-        penetration={props.penetration}
-        resistances={props.resistances}
-        racialBonus={props.racialBonus}
       />
     </div>
   );
