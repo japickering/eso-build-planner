@@ -6,6 +6,7 @@
     "image": "ebonheart.png",
     "level": 1,
     "maxLevel": 50,
+    "skillPoints": 1,
     "race": "Nord",
     "classType": "Dragonknight",
     "gender": "male",
@@ -34,8 +35,8 @@
       "staminaRegen": "5%",
       "weaponXp": "10%"
     },
-    "gear": {
-      "head": {
+    "gear": [
+      {
         "image": "buoyantarmiger_light_head_a.png",
         "title": "helmet",
         "type": "gear",
@@ -44,16 +45,16 @@
         "style": "buoyant armiger",
         "stat": "health"
       },
-      "shoulder": {
+      {
         "image": "buoyantarmiger_medium_shoulders_a.png",
         "type": "gear",
-        "title": "guards",
+        "title": "epaulets",
         "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
         "stat": "health"
       },
-      "chest": {
+      {
         "image": "buoyantarmiger_medium_chest_a.png",
         "type": "gear",
         "title": "jacket",
@@ -62,7 +63,7 @@
         "style": "buoyant armiger",
         "stat": "health"
       },
-      "belt": {
+      {
         "image": "ebonheart_medium_waist_a.png",
         "type": "gear",
         "title": "belt",
@@ -71,7 +72,7 @@
         "style": "ebonheart",
         "stat": "health"
       },
-      "hands": {
+      {
         "image": "buoyantarmiger_heavy_hand_a.png",
         "type": "gear",
         "title": "gauntlets",
@@ -80,7 +81,7 @@
         "style": "buoyant armiger",
         "stat": "health"
       },
-      "legs": {
+      {
         "image": "buoyantarmiger_light_legs_a.png",
         "type": "gear",
         "title": "guards",
@@ -89,7 +90,7 @@
         "style": "buoyant armiger",
         "stat": "health"
       },
-      "feet": {
+      {
         "image": "buoyantarmiger_medium_feet_a.png",
         "type": "gear",
         "title": "boots",
@@ -97,39 +98,37 @@
         "bonus": 10,
         "style": "buoyant armiger",
         "stat": "health"
-      }
-    },
-    "jewellery": {
-      "necklace": {
+      },
+      {
         "image": "ring_emerald.png",
         "title": "necklace",
-        "type": "jewellery",
+        "type": "necklace",
         "quality": "common",
         "bonus": 10,
-        "style": "shacklebreaker",
+        "style": "buoyant armiger",
         "stat": "health"
       },
-      "ring1": {
+      {
         "image": "ring_emerald.png",
         "title": "ring",
-        "type": "jewellery",
+        "type": "ring",
         "quality": "common",
         "bonus": 10,
-        "style": "shacklebreaker",
+        "style": "buoyant armiger",
         "stat": "health"
       },
-      "ring2": {
+      {
         "image": "ring_emerald.png",
         "title": "ring",
-        "type": "jewellery",
+        "type": "ring",
         "quality": "common",
         "bonus": 10,
-        "style": "shacklebreaker",
+        "style": "buoyant armiger",
         "stat": "health"
       }
-    },
-    "weapons": {
-      "main": {
+    ],
+    "weapons": [
+      {
         "image": "dragonknight_embers.png",
         "type": "weapon",
         "title": "sword",
@@ -138,9 +137,9 @@
         "damage": "10",
         "range": "5",
         "style": "shacklebreaker",
-        "stat": "fire"
+        "stat": "weapon"
       },
-      "offHand": {
+      {
         "image": "ability_1handed_003.png",
         "type": "weapon",
         "title": "shield",
@@ -149,9 +148,9 @@
         "damage": "10",
         "range": "5",
         "style": "shacklebreaker",
-        "stat": "health"
+        "stat": "weapon"
       },
-      "backup": {
+      {
         "image": "ability_bow_002_b.png",
         "type": "weapon",
         "title": "bow",
@@ -160,9 +159,8 @@
         "damage": "10",
         "range": "35",
         "style": "shacklebreaker",
-        "stat": "health"
+        "stat": "weapon"
       }
-    },
-    "skillPoints": "1"
+    ]
   }
 ]

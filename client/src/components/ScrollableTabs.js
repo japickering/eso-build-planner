@@ -5,17 +5,16 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
+// import GridList from "@material-ui/core/GridList";
+// import GridListTile from "@material-ui/core/GridListTile";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import SettingsIcon from "@material-ui/icons/Settings";
+// import AccountBoxIcon from "@material-ui/icons/AccountBox";
 // import FolderIcon from "@material-ui/icons/Folder";
 // import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 // import SvgIcon from "@material-ui/core/SvgIcon";
@@ -91,73 +90,11 @@ export default function ScrollableTabs(props) {
   // console.log(props);
   const classes = useStyles();
   const [value, setValue] = useState(0);
-  const [tooltip, setTooltip] = useState("");
-  const [image, setImage] = useState("");
+  // const [tooltip, setTooltip] = useState("");
+  // const [image, setImage] = useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const onIconClick = (obj) => {
-    let str;
-    if (obj.type === "weapon") {
-      str =
-        obj.title +
-        " of " +
-        obj.stat +
-        " cast time: " +
-        obj.cast +
-        " damage: " +
-        obj.damage +
-        " range: " +
-        obj.range +
-        " metres";
-    } else {
-      str =
-        obj.style +
-        " " +
-        obj.title +
-        " of " +
-        obj.stat +
-        " + " +
-        obj.bonus +
-        " quality: " +
-        obj.quality;
-    }
-    setImage(obj.image);
-    setTooltip(str);
-  };
-
-  const renderGridTile = (props) => {
-    let arr = [];
-    let i = 0;
-    for (const key in props) {
-      if (props.hasOwnProperty(key)) {
-        let element = props[key];
-        arr.push({ id: i++, prop: key, value: element });
-      }
-    }
-    if (arr.length < 1) {
-      return;
-    } else {
-      return arr.map((item) => {
-        if (item.prop === "image") {
-          return (
-            <GridListTile key={item.value}>
-              <button
-                className={classes.button}
-                onClick={() => {
-                  onIconClick(props);
-                  window.scrollTo(0, 240);
-                }}
-              >
-                <img src={item.value} alt="skill icon" />
-              </button>
-            </GridListTile>
-          );
-        }
-      });
-    }
   };
 
   const renderListProps = (props) => {
@@ -209,7 +146,6 @@ export default function ScrollableTabs(props) {
         >
           <Tab label="Stats" {...setAttribs(0)} icon={<BarChartIcon />} />
           <Tab label="Resistances" {...setAttribs(1)} icon={<SettingsIcon />} />
-          <Tab label="Equipment" {...setAttribs(2)} icon={<AccountBoxIcon />} />
         </Tabs>
       </Paper>
       <TabPanel value={value} index={0}>
@@ -233,37 +169,6 @@ export default function ScrollableTabs(props) {
 
       <TabPanel value={value} index={1}>
         <List>{renderListProps(props.resistances)}</List>
-      </TabPanel>
-
-      <TabPanel value={value} index={2}>
-        {tooltip !== "" && (
-          <div className={classes.tooltip}>
-            <div
-              className={classes.column}
-              onClick={() => {
-                setTooltip("");
-              }}
-            >
-              <img src={image} alt="icon" />
-            </div>
-            <div className={classes.column2}>{tooltip}</div>
-          </div>
-        )}
-        <GridList cellHeight={80} cols={3} className={classes.gridList}>
-          {renderGridTile(props.gear.head)}
-          {renderGridTile(props.gear.shoulder)}
-          {renderGridTile(props.gear.chest)}
-          {renderGridTile(props.gear.belt)}
-          {renderGridTile(props.gear.hands)}
-          {renderGridTile(props.gear.legs)}
-          {renderGridTile(props.gear.feet)}
-          {renderGridTile(props.jewellery.necklace)}
-          {renderGridTile(props.jewellery.ring)}
-          {renderGridTile(props.jewellery.ring2)}
-          {renderGridTile(props.weapons.main)}
-          {renderGridTile(props.weapons.offHand)}
-          {renderGridTile(props.weapons.backup)}
-        </GridList>
       </TabPanel>
     </div>
   );

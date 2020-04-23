@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import StepSlider from "./StepSlider";
 import ScrollableTabs from "./ScrollableTabs";
+import TransferList from "./TransferList";
 
 import { makeStyles } from "@material-ui/core/styles";
 // import clsx from "clsx";
@@ -9,8 +10,6 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 // import CardMedia from "@material-ui/core/CardMedia";
 // import CardActions from "@material-ui/core/CardActions";
-// import List from "@material-ui/core/List";
-// import ListItem from "@material-ui/core/ListItem";
 
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
@@ -24,10 +23,10 @@ import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: 5,
+    margin: "0 auto",
     width: "100%",
-    minWidth: 275,
-    maxWidth: 500,
+    minWidth: 300,
+    maxWidth: 800,
   },
   header: {
     padding: theme.spacing(2),
@@ -184,6 +183,13 @@ export default function MUICard(props) {
             onInputChange={onStamInputChange}
             aria-labelledby="stamina-slider"
           />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className={classes.header} title="Equipment"></CardHeader>
+        <CardContent className={classes.content}>
+          <TransferList gear={props.gear} weapons={props.weapons} />
         </CardContent>
       </Card>
 
