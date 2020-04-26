@@ -25,7 +25,7 @@
     "weapon": { "weapon damage": 0, "weapon critical": 0 },
     "resistances": {
       "critical": 0,
-      "physical": 0,
+      "armour": 0,
       "spell": 0,
       "disease": 0,
       "frost": 0,
@@ -41,99 +41,99 @@
       {
         "image": "buoyantarmiger_heavy_head_a.png",
         "title": "helmet",
-        "type": "gear",
+        "type": "armour",
+        "style": "buoyant armiger",
         "weight": "heavy",
         "quality": "common",
-        "bonus": 10,
-        "style": "buoyant armiger",
-        "stat": "armour"
+        "stat": "armour",
+        "bonus": 10
       },
       {
         "image": "redoran_medium_shoulders_a.png",
-        "type": "gear",
+        "type": "armour",
         "weight": "medium",
+        "style": "buoyant armiger",
         "title": "shoulders",
         "quality": "common",
-        "bonus": 10,
-        "style": "buoyant armiger",
-        "stat": "armour"
+        "stat": "armour",
+        "bonus": 10
       },
       {
         "image": "buoyantarmiger_medium_chest_a.png",
-        "type": "gear",
+        "type": "armour",
         "weight": "medium",
+        "style": "buoyant armiger",
         "title": "jacket",
         "quality": "common",
-        "bonus": 10,
-        "style": "buoyant armiger",
-        "stat": "armour"
+        "stat": "armour",
+        "bonus": 10
       },
       {
         "image": "ebonheart_medium_waist_a.png",
-        "type": "gear",
+        "type": "armour",
         "weight": "medium",
         "title": "belt",
         "quality": "common",
+        "stat": "armour",
         "bonus": 10,
-        "style": "ebonheart",
-        "stat": "armour"
+        "style": "ebonheart"
       },
       {
         "image": "buoyantarmiger_heavy_hand_a.png",
-        "type": "gear",
+        "type": "armour",
         "weight": "heavy",
+        "style": "buoyant armiger",
         "title": "gauntlets",
         "quality": "common",
-        "bonus": 10,
-        "style": "buoyant armiger",
-        "stat": "armour"
+        "stat": "armour",
+        "bonus": 10
       },
       {
         "image": "buoyantarmiger_light_legs_a.png",
-        "type": "gear",
+        "type": "armour",
         "weight": "light",
+        "style": "buoyant armiger",
         "title": "guards",
         "quality": "common",
-        "bonus": 10,
-        "style": "buoyant armiger",
-        "stat": "armour"
+        "stat": "armour",
+        "bonus": 10
       },
       {
         "image": "buoyantarmiger_medium_feet_a.png",
-        "type": "gear",
+        "type": "armour",
         "weight": "medium",
+        "style": "buoyant armiger",
         "title": "boots",
         "quality": "common",
-        "bonus": 10,
-        "style": "buoyant armiger",
-        "stat": "armour"
+        "stat": "armour",
+        "bonus": 10
       },
       {
         "image": "ring_emerald.png",
         "title": "necklace",
         "type": "necklace",
-        "quality": "common",
-        "bonus": 10,
         "style": "buoyant armiger",
-        "stat": "armour"
+        "quality": "common",
+        "stat": "armour",
+        "bonus": 10
       },
       {
         "image": "ring_emerald.png",
         "title": "ring",
         "type": "ring",
-        "quality": "common",
-        "bonus": 10,
         "style": "buoyant armiger",
-        "stat": "armour"
+        "quality": "common",
+        "stat": "armour",
+        "bonus": 10
       },
       {
         "image": "ring_emerald.png",
         "title": "ring",
         "type": "ring",
-        "quality": "common",
-        "bonus": 10,
         "style": "buoyant armiger",
-        "stat": "armour"
+        "quality": "common",
+        "stat": "armour",
+        "bonus": 10
       }
     ],
     "weapons": [

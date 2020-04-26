@@ -13,14 +13,6 @@ import CardContent from "@material-ui/core/CardContent";
 
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
-// import FolderIcon from "@material-ui/icons/Folder";
-// import Avatar from "@material-ui/core/Avatar";
-// import Button from "@material-ui/core/Button";
-// import IconButton from "@material-ui/core/IconButton";
-// import ImageIcon from "@material-ui/icons/Image";
-// import Collapse from "@material-ui/core/Collapse";
-// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-// import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,10 +60,47 @@ export default function MUICard(props) {
   const [health, setValue] = useState(props.max);
   const [magicka, setMag] = useState(0);
   const [stamina, setStam] = useState(0);
+  const [armour, setArmour] = useState(0);
 
   const title = String(
-    props.name + " Level " + level + " " + props.race.name + " " + props.classType
+    props.name +
+      " Level " +
+      level +
+      " " +
+      props.race.name +
+      " " +
+      props.classType
   );
+
+  const onArmourBoost = (obj) => {
+    if (obj.type === "armour") {
+      const amount = obj.bonus;
+      const max = 1000;
+      if ((armour + amount) > max) {
+        setArmour(max);
+      } else {
+        let newValue = armour + amount;
+        setArmour(newValue);
+      }
+    } else {
+      return;
+    }
+  };
+
+  const onArmourWeaken = (obj) => {
+    if (obj.type === "armour") {
+      const amount = obj.bonus;
+      if ((armour - amount) <= 0) {
+        setArmour(0);
+      } else {
+        let newValue = armour - amount;
+        setArmour(newValue);
+      }
+    } else {
+      return;
+    }
+  };
+
   const onLevelInputChange = (event) => {
     setLevel(event.target.value === "" ? "" : Number(event.target.value));
   };
@@ -185,14 +214,19 @@ export default function MUICard(props) {
 
       <Card>
         <CardContent className={classes.content}>
-          
           <h3>Inventory</h3>
-          <TransferList gear={props.gear} weapons={props.weapons} />
+          <TransferList
+            onArmourBoost={onArmourBoost}
+            onArmourWeaken={onArmourWeaken}
+            gear={props.gear}
+            weapons={props.weapons}
+          />
         </CardContent>
       </Card>
 
       <ScrollableTabs
         {...props}
+        armour={armour}
         health={health}
         magicka={magicka}
         stamina={stamina}

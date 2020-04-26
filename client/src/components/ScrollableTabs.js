@@ -144,7 +144,7 @@ export default function ScrollableTabs(props) {
           aria-label="attributes"
         >
           <Tab label="Stats" {...setAttribs(0)} icon={<BarChartIcon />} />
-          <Tab label="Resistances" {...setAttribs(1)} icon={<SettingsIcon />} />
+          {/* <Tab label="Resistances" {...setAttribs(1)} icon={<SettingsIcon />} /> */}
         </Tabs>
       </Paper>
       <TabPanel value={value} index={0}>
@@ -159,6 +159,7 @@ export default function ScrollableTabs(props) {
               <ListItem>stamina recovery: {props.staminaRecovery}</ListItem>
             </Grid>
             <Grid item>
+              <ListItem>armour: {props.armour}</ListItem>
               {listProps(props.spell)}
               {listProps(props.weapon)}
               {listProps(props.race.bonus)}
@@ -167,9 +168,11 @@ export default function ScrollableTabs(props) {
         </List>
       </TabPanel>
 
-      <TabPanel value={value} index={1}>
-        <List>{listProps(props.resistances)}</List>
-      </TabPanel>
+      {/* <TabPanel value={value} index={1}>
+        <List>
+          <ListItem>armour: {props.armour}</ListItem>
+        </List>
+      </TabPanel> */}
     </div>
   );
 }

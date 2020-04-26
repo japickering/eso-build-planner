@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import Icon from "@material-ui/core/Icon";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 // import { capitalize } from "@material-ui/core";
@@ -20,7 +21,22 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#222",
   },
   icon: {
-    marginBottom: 8,
+    margin: 8,
+  },
+  notChecked: {
+    display: "block",
+    flexDirection: "column",
+    border: "1px solid transparent",
+    backgroundColor: "#000",
+    color: "#fff",
+  },
+  checked: {
+    width: "98%",
+    display: "block",
+    flexDirection: "column",
+    border: "1px solid gold",
+    backgroundColor: "#000",
+    color: "#fff",
   },
   column: {
     display: "flex",
@@ -33,8 +49,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
   },
   button: {
-    margin: theme.spacing(0.5, 0),
-    fontSize: 30,
+    margin: theme.spacing(1, 0),
   },
 }));
 
@@ -48,10 +63,10 @@ function intersection(a, b) {
 
 export default function TransferList(props) {
   const classes = useStyles();
+  const [value, setValue] = useState(0);
   const [checked, setChecked] = useState([]);
   const [left, setLeft] = useState([...props.gear, ...props.weapons]);
   const [right, setRight] = useState([]);
-
   const leftChecked = intersection(checked, left);
   const rightChecked = intersection(checked, right);
 
@@ -67,8 +82,8 @@ export default function TransferList(props) {
 
     setChecked(newChecked);
   };
-  
-/*   const handleAllLeft = () => {
+
+  /*   const handleAllLeft = () => {
     setLeft(left.concat(right));
     setRight([]);
   };
@@ -81,14 +96,23 @@ export default function TransferList(props) {
     setRight(right.concat(leftChecked));
     setLeft(not(left, leftChecked));
     setChecked(not(checked, leftChecked));
+
+    leftChecked.forEach((item) => {
+      console.log(item);
+      props.onArmourBoost(item);
+    });
   };
 
   const handleCheckedLeft = () => {
     setLeft(left.concat(rightChecked));
     setRight(not(right, rightChecked));
     setChecked(not(checked, rightChecked));
-  };
 
+    rightChecked.forEach((item) => {
+      console.log(item);
+      props.onArmourWeaken(item);
+    });
+  };
 
   const printBaseItem = (obj) => {
     if (obj.weight) {
@@ -116,8 +140,12 @@ export default function TransferList(props) {
         {items.map((obj) => {
           return (
             <ListItem
-              className={classes.column}
               key={obj.title}
+              className={
+                checked.indexOf(obj) !== -1
+                  ? classes.checked
+                  : classes.notChecked
+              }
               role="list item"
               button
               onClick={handleToggle(obj)}
@@ -128,8 +156,8 @@ export default function TransferList(props) {
                 alt={`${obj.title} icon`}
               />
               <h3 className={classes.header}>{printBaseItem(obj)}</h3>
-              <h3 className={classes.header}>{printQuality(obj)}</h3>
-              <div>{printStats(obj)}</div>
+              <p className={classes.header}>{printQuality(obj)}</p>
+              <p className={classes.header}>{printStats(obj)}</p>
             </ListItem>
           );
         })}
@@ -153,24 +181,20 @@ export default function TransferList(props) {
       <Grid item>
         <Grid container direction="column" alignItems="center">
           <Button
-            variant="outlined"
-            size="small"
             className={classes.button}
             onClick={handleCheckedRight}
             disabled={leftChecked.length === 0}
             aria-label="move selected right"
           >
-            &gt;
+            <Icon>add_circle</Icon>
           </Button>
           <Button
-            variant="outlined"
-            size="small"
             className={classes.button}
             onClick={handleCheckedLeft}
             disabled={rightChecked.length === 0}
             aria-label="move selected left"
           >
-            &lt;
+            <Icon>remove_circle</Icon>
           </Button>
         </Grid>
       </Grid>
