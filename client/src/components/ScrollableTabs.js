@@ -15,7 +15,6 @@ import Box from "@material-ui/core/Box";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import SettingsIcon from "@material-ui/icons/Settings";
 // import AccountBoxIcon from "@material-ui/icons/AccountBox";
-// import FolderIcon from "@material-ui/icons/Folder";
 // import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 // import SvgIcon from "@material-ui/core/SvgIcon";
 
@@ -97,7 +96,7 @@ export default function ScrollableTabs(props) {
     setValue(newValue);
   };
 
-  const renderListProps = (props) => {
+  const listProps = (props) => {
     let arr = [];
     let i = 0;
     for (const key in props) {
@@ -160,15 +159,16 @@ export default function ScrollableTabs(props) {
               <ListItem>stamina recovery: {props.staminaRecovery}</ListItem>
             </Grid>
             <Grid item>
-              {renderListProps(props.spell)}
-              {renderListProps(props.weapon)}
+              {listProps(props.spell)}
+              {listProps(props.weapon)}
+              {listProps(props.race.bonus)}
             </Grid>
           </Grid>
         </List>
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        <List>{renderListProps(props.resistances)}</List>
+        <List>{listProps(props.resistances)}</List>
       </TabPanel>
     </div>
   );

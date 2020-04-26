@@ -13,9 +13,10 @@ import CardContent from "@material-ui/core/CardContent";
 
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
+// import FolderIcon from "@material-ui/icons/Folder";
 // import Avatar from "@material-ui/core/Avatar";
-// import IconButton from "@material-ui/core/IconButton";
 // import Button from "@material-ui/core/Button";
+// import IconButton from "@material-ui/core/IconButton";
 // import ImageIcon from "@material-ui/icons/Image";
 // import Collapse from "@material-ui/core/Collapse";
 // import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -67,13 +68,9 @@ export default function MUICard(props) {
   const [health, setValue] = useState(props.max);
   const [magicka, setMag] = useState(0);
   const [stamina, setStam] = useState(0);
-  // const [expanded, setExpanded] = useState(false);
-  // const handleExpandClick = () => {
-  //   setExpanded(!expanded);
-  // };
 
   const title = String(
-    props.name + " Level " + level + " " + props.race + " " + props.classType
+    props.name + " Level " + level + " " + props.race.name + " " + props.classType
   );
   const onLevelInputChange = (event) => {
     setLevel(event.target.value === "" ? "" : Number(event.target.value));
@@ -142,7 +139,7 @@ export default function MUICard(props) {
         <CardHeader className={classes.header} title={title}></CardHeader>
 
         <CardContent className={classes.content}>
-          <h2>Attributes</h2>
+          <h3>Attributes</h3>
           <Typography id="level-slider" gutterBottom>
             Level
           </Typography>
@@ -187,8 +184,9 @@ export default function MUICard(props) {
       </Card>
 
       <Card>
-        <CardHeader className={classes.header} title="Equipment"></CardHeader>
         <CardContent className={classes.content}>
+          
+          <h3>Inventory</h3>
           <TransferList gear={props.gear} weapons={props.weapons} />
         </CardContent>
       </Card>

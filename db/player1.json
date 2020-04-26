@@ -7,7 +7,13 @@
     "level": 1,
     "maxLevel": 50,
     "skillPoints": 1,
-    "race": "Nord",
+    "race": {
+      "name": "Nord",
+      "bonus": {
+        "stamina bonus": "+5%",
+        "two-handed xp": "+5%"
+      }
+    },
     "classType": "Dragonknight",
     "gender": "male",
     "max": 64,
@@ -31,73 +37,76 @@
       "physical": 0,
       "spell": 0
     },
-    "racialBonus": {
-      "staminaRegen": "5%",
-      "weaponXp": "10%"
-    },
     "gear": [
       {
-        "image": "buoyantarmiger_light_head_a.png",
+        "image": "buoyantarmiger_heavy_head_a.png",
         "title": "helmet",
         "type": "gear",
+        "weight": "heavy",
         "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
-        "stat": "health"
+        "stat": "armour"
       },
       {
-        "image": "buoyantarmiger_medium_shoulders_a.png",
+        "image": "redoran_medium_shoulders_a.png",
         "type": "gear",
-        "title": "epaulets",
+        "weight": "medium",
+        "title": "shoulders",
         "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
-        "stat": "health"
+        "stat": "armour"
       },
       {
         "image": "buoyantarmiger_medium_chest_a.png",
         "type": "gear",
+        "weight": "medium",
         "title": "jacket",
         "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
-        "stat": "health"
+        "stat": "armour"
       },
       {
         "image": "ebonheart_medium_waist_a.png",
         "type": "gear",
+        "weight": "medium",
         "title": "belt",
         "quality": "common",
         "bonus": 10,
         "style": "ebonheart",
-        "stat": "health"
+        "stat": "armour"
       },
       {
         "image": "buoyantarmiger_heavy_hand_a.png",
         "type": "gear",
+        "weight": "heavy",
         "title": "gauntlets",
         "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
-        "stat": "health"
+        "stat": "armour"
       },
       {
         "image": "buoyantarmiger_light_legs_a.png",
         "type": "gear",
+        "weight": "light",
         "title": "guards",
         "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
-        "stat": "health"
+        "stat": "armour"
       },
       {
         "image": "buoyantarmiger_medium_feet_a.png",
         "type": "gear",
+        "weight": "medium",
         "title": "boots",
         "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
-        "stat": "health"
+        "stat": "armour"
       },
       {
         "image": "ring_emerald.png",
@@ -106,7 +115,7 @@
         "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
-        "stat": "health"
+        "stat": "armour"
       },
       {
         "image": "ring_emerald.png",
@@ -115,7 +124,7 @@
         "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
-        "stat": "health"
+        "stat": "armour"
       },
       {
         "image": "ring_emerald.png",
@@ -124,7 +133,7 @@
         "quality": "common",
         "bonus": 10,
         "style": "buoyant armiger",
-        "stat": "health"
+        "stat": "armour"
       }
     ],
     "weapons": [
