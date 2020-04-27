@@ -13,7 +13,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import BarChartIcon from "@material-ui/icons/BarChart";
-import SettingsIcon from "@material-ui/icons/Settings";
+// import SettingsIcon from "@material-ui/icons/Settings";
 // import AccountBoxIcon from "@material-ui/icons/AccountBox";
 // import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 // import SvgIcon from "@material-ui/core/SvgIcon";
@@ -160,8 +160,9 @@ export default function ScrollableTabs(props) {
             </Grid>
             <Grid item>
               <ListItem>armour: {props.armour}</ListItem>
-              {listProps(props.spell)}
-              {listProps(props.weapon)}
+              <ListItem>weapon damage: {props.weaponDamage}</ListItem>
+              {/* {listProps(props.spell)} */}
+              {/* {listProps(props.weapon)} */}
               {listProps(props.race.bonus)}
             </Grid>
           </Grid>

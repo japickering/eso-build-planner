@@ -53,51 +53,53 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MUICard(props) {
-  // console.log(props.weapons);
+export default function Main(props) {
+
   const classes = useStyles();
   const [level, setLevel] = useState(1);
   const [health, setValue] = useState(props.max);
   const [magicka, setMag] = useState(0);
   const [stamina, setStam] = useState(0);
   const [armour, setArmour] = useState(0);
+  const [weaponDamage, setwWeaponDamage] = useState(0);
 
-  const title = String(
-    props.name +
-      " Level " +
-      level +
-      " " +
-      props.race.name +
-      " " +
-      props.classType
-  );
+  const title = `${props.name} Level ${level} ${props.race.name} ${props.classType}`;
 
-  const onArmourBoost = (obj) => {
-    if (obj.type === "armour") {
-      const amount = obj.bonus;
-      const max = 1000;
-      if ((armour + amount) > max) {
-        setArmour(max);
-      } else {
-        let newValue = armour + amount;
-        setArmour(newValue);
-      }
+  const onArmourBoost = (amount) => {
+    const max = 1000;
+    if (armour + amount > max) {
+      setArmour(max);
     } else {
-      return;
+      let newValue = armour + amount;
+      setArmour(newValue);
     }
   };
 
-  const onArmourWeaken = (obj) => {
-    if (obj.type === "armour") {
-      const amount = obj.bonus;
-      if ((armour - amount) <= 0) {
-        setArmour(0);
-      } else {
-        let newValue = armour - amount;
-        setArmour(newValue);
-      }
+  const onArmourWeaken = (amount) => {
+    if (armour - amount <= 0) {
+      setArmour(0);
     } else {
-      return;
+      let newValue = armour - amount;
+      setArmour(newValue);
+    }
+  };
+
+  const onWeaponDamageBoost = (amount) => {
+    const max = 1000;
+    if (weaponDamage + amount > max) {
+      setwWeaponDamage(max);
+    } else {
+      let newValue = weaponDamage + amount;
+      setwWeaponDamage(newValue);
+    }
+  };
+
+  const onWeaponDamageWeaken = (amount) => {
+    if (weaponDamage - amount <= 0) {
+      setwWeaponDamage(0);
+    } else {
+      let newValue = weaponDamage - amount;
+      setwWeaponDamage(newValue);
     }
   };
 
@@ -218,6 +220,9 @@ export default function MUICard(props) {
           <TransferList
             onArmourBoost={onArmourBoost}
             onArmourWeaken={onArmourWeaken}
+            onWeaponDamageBoost={onWeaponDamageBoost}
+            onWeaponDamageWeaken={onWeaponDamageWeaken}
+            onDam
             gear={props.gear}
             weapons={props.weapons}
           />
@@ -227,6 +232,7 @@ export default function MUICard(props) {
       <ScrollableTabs
         {...props}
         armour={armour}
+        weaponDamage={weaponDamage}
         health={health}
         magicka={magicka}
         stamina={stamina}

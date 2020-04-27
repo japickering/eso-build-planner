@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MUICard from "./components/MUICard";
+import Main from "./components/Main";
 import "./App.css";
 
 export default class App extends Component {
@@ -38,7 +38,7 @@ export default class App extends Component {
         <div className="container">
           <p>Results found..</p>
           {this.state.response !== "" && (
-            <MUICard {...this.state.response[0]} />
+            <Main {...this.state.response[0]} />
           )}
         </div>
       </div>

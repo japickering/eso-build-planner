@@ -44,19 +44,19 @@
         "type": "armour",
         "style": "buoyant armiger",
         "weight": "heavy",
-        "quality": "common",
-        "stat": "armour",
-        "bonus": 10
+        "quality": "epic",
+        "effect": "armour",
+        "bonus": 40
       },
       {
-        "image": "redoran_medium_shoulders_a.png",
+        "image": "buoyantarmiger_medium_shoulders_a.png",
         "type": "armour",
         "weight": "medium",
         "style": "buoyant armiger",
         "title": "shoulders",
-        "quality": "common",
-        "stat": "armour",
-        "bonus": 10
+        "quality": "rare",
+        "effect": "armour",
+        "bonus": 30
       },
       {
         "image": "buoyantarmiger_medium_chest_a.png",
@@ -64,9 +64,9 @@
         "weight": "medium",
         "style": "buoyant armiger",
         "title": "jacket",
-        "quality": "common",
-        "stat": "armour",
-        "bonus": 10
+        "quality": "uncommon",
+        "effect": "armour",
+        "bonus": 20
       },
       {
         "image": "ebonheart_medium_waist_a.png",
@@ -74,7 +74,7 @@
         "weight": "medium",
         "title": "belt",
         "quality": "common",
-        "stat": "armour",
+        "effect": "armour",
         "bonus": 10,
         "style": "ebonheart"
       },
@@ -85,7 +85,7 @@
         "style": "buoyant armiger",
         "title": "gauntlets",
         "quality": "common",
-        "stat": "armour",
+        "effect": "armour",
         "bonus": 10
       },
       {
@@ -95,7 +95,7 @@
         "style": "buoyant armiger",
         "title": "guards",
         "quality": "common",
-        "stat": "armour",
+        "effect": "armour",
         "bonus": 10
       },
       {
@@ -105,7 +105,7 @@
         "style": "buoyant armiger",
         "title": "boots",
         "quality": "common",
-        "stat": "armour",
+        "effect": "armour",
         "bonus": 10
       },
       {
@@ -113,62 +113,62 @@
         "title": "necklace",
         "type": "necklace",
         "style": "buoyant armiger",
-        "quality": "common",
-        "stat": "armour",
+        "quality": "uncommon",
+        "effect": "magicka",
         "bonus": 10
       },
       {
         "image": "ring_emerald.png",
-        "title": "ring",
+        "title": "ring1",
         "type": "ring",
         "style": "buoyant armiger",
-        "quality": "common",
-        "stat": "armour",
+        "quality": "uncommon",
+        "effect": "magicka",
         "bonus": 10
       },
       {
         "image": "ring_emerald.png",
-        "title": "ring",
+        "title": "ring2",
         "type": "ring",
         "style": "buoyant armiger",
-        "quality": "common",
-        "stat": "armour",
+        "quality": "uncommon",
+        "effect": "magicka",
         "bonus": 10
       }
     ],
     "weapons": [
       {
         "image": "dragonknight_embers.png",
-        "type": "weapon",
         "title": "sword",
-        "quality": "common",
-        "cast": "instant",
-        "damage": "10",
-        "range": "5",
+        "type": "weapon",
         "style": "shacklebreaker",
-        "stat": "weapon"
+        "quality": "uncommon",
+        "cast": "instant",
+        "effect": "weapon",
+        "damage": 30,
+        "range": 5
       },
       {
         "image": "ability_1handed_003.png",
-        "type": "weapon",
         "title": "shield",
-        "quality": "common",
-        "cast": "instant",
-        "damage": "10",
-        "range": "5",
+        "type": "weapon",
         "style": "shacklebreaker",
-        "stat": "weapon"
+        "quality": "uncommon",
+        "cast": "instant",
+        "effect": "weapon",
+        "damage": 20,
+        "range": 5
       },
       {
         "image": "ability_bow_002_b.png",
-        "type": "weapon",
         "title": "bow",
-        "quality": "common",
-        "cast": "instant",
-        "damage": "10",
-        "range": "35",
+        "type": "weapon",
         "style": "shacklebreaker",
-        "stat": "weapon"
+        "quality": "uncommon",
+        "cast": "instant",
+        "effect": "weapon",
+        "damage": 10,
+        "range": 35
       }
     ]
   }

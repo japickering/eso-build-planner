@@ -14,14 +14,12 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     width: 250,
-    height: 450,
+    height: 400,
     overflow: "auto",
-  },
-  list: {
     backgroundColor: "#222",
   },
   icon: {
-    margin: 8,
+    margin: 5,
   },
   notChecked: {
     display: "block",
@@ -63,7 +61,6 @@ function intersection(a, b) {
 
 export default function TransferList(props) {
   const classes = useStyles();
-  const [value, setValue] = useState(0);
   const [checked, setChecked] = useState([]);
   const [left, setLeft] = useState([...props.gear, ...props.weapons]);
   const [right, setRight] = useState([]);
@@ -73,13 +70,11 @@ export default function TransferList(props) {
   const handleToggle = (obj) => () => {
     const currentIndex = checked.indexOf(obj);
     const newChecked = [...checked];
-
     if (currentIndex === -1) {
       newChecked.push(obj);
     } else {
       newChecked.splice(currentIndex, 1);
     }
-
     setChecked(newChecked);
   };
 
@@ -97,10 +92,18 @@ export default function TransferList(props) {
     setLeft(not(left, leftChecked));
     setChecked(not(checked, leftChecked));
 
+    let amount = 0;
+    let damage = 0;
     leftChecked.forEach((item) => {
-      console.log(item);
-      props.onArmourBoost(item);
+      if (item.type === "armour") {
+        amount += item.bonus;
+      }
+      if (item.type === "weapon") {
+        damage += item.damage;
+      }
     });
+    props.onArmourBoost(amount);
+    props.onWeaponDamageBoost(damage);
   };
 
   const handleCheckedLeft = () => {
@@ -108,29 +111,37 @@ export default function TransferList(props) {
     setRight(not(right, rightChecked));
     setChecked(not(checked, rightChecked));
 
+    let amount = 0;
+    let damage = 0;
     rightChecked.forEach((item) => {
-      console.log(item);
-      props.onArmourWeaken(item);
+      if (item.type === "armour") {
+        amount += item.bonus;
+      }
+      if (item.type === "weapon") {
+        damage += item.damage;
+      }
     });
+    props.onArmourWeaken(amount);
+    props.onWeaponDamageWeaken(damage);
   };
 
   const printBaseItem = (obj) => {
     if (obj.weight) {
-      return obj.style + " " + obj.weight + " " + obj.title;
+      return `${obj.style} ${obj.weight} ${obj.title}`;
     } else {
-      return obj.style + " " + obj.title;
+      return `${obj.style} ${obj.title}`;
     }
   };
 
   const printQuality = (obj) => {
-    return "quality: " + " " + obj.quality;
+    return `quality: ${obj.quality}`;
   };
 
   const printStats = (obj) => {
     if (obj.type === "weapon") {
-      return obj.damage + " damage";
+      return `${obj.damage} damage`;
     } else {
-      return obj.stat + " + " + obj.bonus;
+      return `${obj.effect} ${obj.bonus}`;
     }
   };
 
@@ -155,7 +166,18 @@ export default function TransferList(props) {
                 src={obj.image}
                 alt={`${obj.title} icon`}
               />
-              <h3 className={classes.header}>{printBaseItem(obj)}</h3>
+              <h3 className={classes.header}>
+                {obj.quality === "epic" && (
+                  <span style={{ color: "#ff00ff" }}>{printBaseItem(obj)}</span>
+                )}
+                {obj.quality === "rare" && (
+                  <span style={{ color: "#00ffff" }}>{printBaseItem(obj)}</span>
+                )}
+                {obj.quality === "uncommon" && (
+                  <span style={{ color: "#00ff00" }}>{printBaseItem(obj)}</span>
+                )}
+                {obj.quality === "common" && printBaseItem(obj)}
+              </h3>
               <p className={classes.header}>{printQuality(obj)}</p>
               <p className={classes.header}>{printStats(obj)}</p>
             </ListItem>
