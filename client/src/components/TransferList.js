@@ -18,24 +18,6 @@ const useStyles = makeStyles((theme) => ({
     overflow: "auto",
     backgroundColor: "#222",
   },
-  icon: {
-    margin: 5,
-  },
-  notChecked: {
-    display: "block",
-    flexDirection: "column",
-    border: "1px solid transparent",
-    backgroundColor: "#000",
-    color: "#fff",
-  },
-  checked: {
-    width: "98%",
-    display: "block",
-    flexDirection: "column",
-    border: "1px solid gold",
-    backgroundColor: "#000",
-    color: "#fff",
-  },
   column: {
     display: "flex",
     flexDirection: "column",
@@ -48,6 +30,25 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1, 0),
+  },
+  icon: {
+    margin: 5,
+  },
+  notChecked: {
+    width: "98%",
+    display: "flex",
+    flexDirection: "column",
+    border: "1px solid transparent",
+    backgroundColor: "#000",
+    color: "#fff",
+  },
+  checked: {
+    width: "98%",
+    display: "flex",
+    flexDirection: "column",
+    border: "1px solid gold",
+    backgroundColor: "#000",
+    color: "#fff",
   },
 }));
 
@@ -87,13 +88,17 @@ export default function TransferList(props) {
     setLeft([]);
   }; */
 
-  const handleCheckedRight = () => {
+  const onEquipItem = () => {
     setRight(right.concat(leftChecked));
     setLeft(not(left, leftChecked));
     setChecked(not(checked, leftChecked));
 
     let amount = 0;
+    let fire = 0;
+    let mag = 0;
+    let stam = 0;
     let damage = 0;
+
     leftChecked.forEach((item) => {
       if (item.type === "armour") {
         amount += item.bonus;
@@ -101,18 +106,33 @@ export default function TransferList(props) {
       if (item.type === "weapon") {
         damage += item.damage;
       }
+      if (item.effect === "fire") {
+        fire += item.bonus;
+      }
+      if (item.effect === "magicka") {
+        mag += item.bonus;
+      }
+      if (item.effect === "stamina") {
+        stam += item.bonus;
+      }
     });
     props.onArmourBoost(amount);
+    props.onMagBoost(mag);
+    props.onStamBoost(stam);
     props.onWeaponDamageBoost(damage);
   };
 
-  const handleCheckedLeft = () => {
+  const onUnequipItem = () => {
     setLeft(left.concat(rightChecked));
     setRight(not(right, rightChecked));
     setChecked(not(checked, rightChecked));
 
     let amount = 0;
+    let fire = 0;
+    let mag = 0;
+    let stam = 0;
     let damage = 0;
+
     rightChecked.forEach((item) => {
       if (item.type === "armour") {
         amount += item.bonus;
@@ -120,8 +140,19 @@ export default function TransferList(props) {
       if (item.type === "weapon") {
         damage += item.damage;
       }
+      if (item.effect === "fire") {
+        fire += item.bonus;
+      }
+      if (item.effect === "magicka") {
+        mag += item.bonus;
+      }
+      if (item.effect === "stamina") {
+        stam += item.bonus;
+      }
     });
     props.onArmourWeaken(amount);
+    props.onMagWeaken(mag);
+    props.onStamWeaken(stam);
     props.onWeaponDamageWeaken(damage);
   };
 
@@ -141,7 +172,7 @@ export default function TransferList(props) {
     if (obj.type === "weapon") {
       return `${obj.damage} damage`;
     } else {
-      return `${obj.effect} ${obj.bonus}`;
+      return `${obj.effect} + ${obj.bonus}`;
     }
   };
 
@@ -171,7 +202,7 @@ export default function TransferList(props) {
                   <span style={{ color: "#ff00ff" }}>{printBaseItem(obj)}</span>
                 )}
                 {obj.quality === "rare" && (
-                  <span style={{ color: "#00ffff" }}>{printBaseItem(obj)}</span>
+                  <span style={{ color: "#00AAFF" }}>{printBaseItem(obj)}</span>
                 )}
                 {obj.quality === "uncommon" && (
                   <span style={{ color: "#00ff00" }}>{printBaseItem(obj)}</span>
@@ -189,22 +220,16 @@ export default function TransferList(props) {
   );
 
   return (
-    <Grid
-      container
-      spacing={2}
-      justify="center"
-      alignItems="center"
-      className={classes.root}
-    >
+    <Grid container spacing={2} alignItems="center" className={classes.root}>
       <Grid item>
         <h3 className={classes.header}>Backpack</h3>
         {itemsList(left)}
       </Grid>
       <Grid item>
-        <Grid container direction="column" alignItems="center">
+        <Grid container direction="column">
           <Button
             className={classes.button}
-            onClick={handleCheckedRight}
+            onClick={onEquipItem}
             disabled={leftChecked.length === 0}
             aria-label="move selected right"
           >
@@ -212,7 +237,7 @@ export default function TransferList(props) {
           </Button>
           <Button
             className={classes.button}
-            onClick={handleCheckedLeft}
+            onClick={onUnequipItem}
             disabled={rightChecked.length === 0}
             aria-label="move selected left"
           >

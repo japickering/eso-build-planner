@@ -75,12 +75,23 @@ export default function Main(props) {
     }
   };
 
-  const onArmourWeaken = (amount) => {
-    if (armour - amount <= 0) {
-      setArmour(0);
+  const onMagBoost = (amount) => {
+    const max = 3000;
+    if (magicka + amount > max) {
+      setMag(max);
     } else {
-      let newValue = armour - amount;
-      setArmour(newValue);
+      let newValue = magicka + amount;
+      setMag(newValue);
+    }
+  };
+  
+  const onStamBoost = (amount) => {
+    const max = 3000;
+    if (stamina + amount > max) {
+      setStam(max);
+    } else {
+      let newValue = stamina + amount;
+      setStam(newValue);
     }
   };
 
@@ -91,6 +102,33 @@ export default function Main(props) {
     } else {
       let newValue = weaponDamage + amount;
       setwWeaponDamage(newValue);
+    }
+  };
+
+  const onArmourWeaken = (amount) => {
+    if (armour - amount <= 0) {
+      setArmour(0);
+    } else {
+      let newValue = armour - amount;
+      setArmour(newValue);
+    }
+  };
+
+  const onMagWeaken = (amount) => {
+    if (magicka - amount <= 0) {
+      setMag(0);
+    } else {
+      let newValue = magicka - amount;
+      setMag(newValue);
+    }
+  };
+
+  const onStamWeaken = (amount) => {
+    if (stamina - amount <= 0) {
+      setStam(0);
+    } else {
+      let newValue = stamina - amount;
+      setStam(newValue);
     }
   };
 
@@ -220,6 +258,10 @@ export default function Main(props) {
           <TransferList
             onArmourBoost={onArmourBoost}
             onArmourWeaken={onArmourWeaken}
+            onMagBoost={onMagBoost}
+            onMagWeaken={onMagWeaken}
+            onStamgBoost={onStamgBoost}
+            onStamgWeaken={onStamgWeaken}
             onWeaponDamageBoost={onWeaponDamageBoost}
             onWeaponDamageWeaken={onWeaponDamageWeaken}
             onDam
