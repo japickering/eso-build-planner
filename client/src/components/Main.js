@@ -260,8 +260,8 @@ export default function Main(props) {
             onArmourWeaken={onArmourWeaken}
             onMagBoost={onMagBoost}
             onMagWeaken={onMagWeaken}
-            onStamgBoost={onStamgBoost}
-            onStamgWeaken={onStamgWeaken}
+            onStamBoost={onStamBoost}
+            onStamWeaken={onStamWeaken}
             onWeaponDamageBoost={onWeaponDamageBoost}
             onWeaponDamageWeaken={onWeaponDamageWeaken}
             onDam
