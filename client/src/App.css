@@ -86,10 +86,11 @@ img {
   text-align: right;
 }
 
-.icon {
-  border: 0;
-  width: 45px;
-  height: 45px;
+.icon-coin {
+  padding-top: 2px;
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
 }
 
 .banner {

@@ -45,8 +45,9 @@
         "weight": "light",
         "style": "cloth",
         "quality": "uncommon",
-        "effect": "armour",
-        "bonus": 10
+        "effect": "magicka",
+        "bonus": 10,
+        "gold": 10
       },
       {
         "image": "armour/redoran_medium_shoulders.png",
@@ -55,8 +56,9 @@
         "weight": "medium",
         "style": "leather",
         "quality": "uncommon",
-        "effect": "armour",
-        "bonus": 10
+        "effect": "stamina",
+        "bonus": 10,
+        "gold": 10
       },
       {
         "image": "armour/light_cloth_chest.png",
@@ -65,8 +67,9 @@
         "weight": "light",
         "style": "cloth",
         "quality": "uncommon",
-        "effect": "armour",
-        "bonus": 10
+        "effect": "magicka",
+        "bonus": 10,
+        "gold": 10
       },
       {
         "image": "armour/light_cloth_hands.png",
@@ -75,8 +78,9 @@
         "weight": "light",
         "style": "cloth",
         "quality": "uncommon",
-        "effect": "armour",
-        "bonus": 10
+        "effect": "magicka",
+        "bonus": 10,
+        "gold": 10
       },
       {
         "image": "armour/light_cloth_legs.png",
@@ -85,8 +89,9 @@
         "weight": "light",
         "style": "cloth",
         "quality": "uncommon",
-        "effect": "armour",
-        "bonus": 10
+        "effect": "magicka",
+        "bonus": 10,
+        "gold": 10
       },
       {
         "image": "armour/light_cloth_feet.png",
@@ -95,8 +100,9 @@
         "weight": "medium",
         "style": "cloth",
         "quality": "uncommon",
-        "effect": "armour",
-        "bonus": 10
+        "effect": "magicka",
+        "bonus": 10,
+        "gold": 10
       },
       {
         "image": "ring_emerald.png",
@@ -105,7 +111,8 @@
         "style": "emerald",
         "quality": "uncommon",
         "effect": "magicka",
-        "bonus": 10
+        "bonus": 10,
+        "gold": 10
       },
       {
         "image": "ring_emerald.png",
@@ -114,7 +121,8 @@
         "style": "emerald",
         "quality": "uncommon",
         "effect": "magicka",
-        "bonus": 10
+        "bonus": 10,
+        "gold": 10
       },
       {
         "image": "ring_emerald.png",
@@ -123,7 +131,19 @@
         "style": "emerald",
         "quality": "uncommon",
         "effect": "magicka",
-        "bonus": 10
+        "bonus": 10,
+        "gold": 10
+      },
+      {
+        "image": "ability_1handed_003.png",
+        "title": "shield",
+        "type": "armour",
+        "style": "ember",
+        "quality": "uncommon",
+        "cast": "instant",
+        "effect": "stamina",
+        "bonus": 10,
+        "gold": 10
       }
     ],
     "weapons": [
@@ -131,37 +151,27 @@
         "image": "dragonknight_embers.png",
         "title": "sword",
         "type": "weapon",
-        "style": "flame",
+        "style": "ember",
         "quality": "uncommon",
         "cast": "instant",
         "effect": "fire",
         "bonus": 10,
-        "damage": 30,
-        "range": 5
-      },
-      {
-        "image": "ability_1handed_003.png",
-        "title": "shield",
-        "type": "weapon",
-        "style": "flame",
-        "quality": "uncommon",
-        "cast": "instant",
-        "effect": "weapon",
-        "bonus": 10,
         "damage": 20,
-        "range": 5
+        "range": 5,
+        "gold": 10
       },
       {
         "image": "ability_bow_002_b.png",
         "title": "bow",
         "type": "weapon",
-        "style": "flame",
+        "style": "ember",
         "quality": "uncommon",
         "cast": "instant",
-        "effect": "weapon",
+        "effect": "poison",
         "bonus": 10,
         "damage": 10,
-        "range": 35
+        "range": 35,
+        "gold": 10
       }
     ]
   }

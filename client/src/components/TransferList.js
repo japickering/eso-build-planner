@@ -13,10 +13,10 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   paper: {
-    width: 250,
+    width: 300,
     height: 400,
+    backgroundColor: "#000",
     overflow: "auto",
-    backgroundColor: "#222",
   },
   column: {
     display: "flex",
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   header: {
     display: "block",
-    fontSize: 14,
+    fontSize: 12,
   },
   button: {
     margin: theme.spacing(1, 0),
@@ -35,20 +35,24 @@ const useStyles = makeStyles((theme) => ({
     margin: 5,
   },
   notChecked: {
-    width: "98%",
-    display: "flex",
-    flexDirection: "column",
+    width: "48%",
+    display: "inline-block",
     border: "1px solid transparent",
+    borderRadius: 4,
     backgroundColor: "#000",
     color: "#fff",
+    textAlign: "left",
+    verticalAlign: "top",
   },
   checked: {
-    width: "98%",
-    display: "flex",
-    flexDirection: "column",
+    width: "48%",
+    display: "inline-block",
     border: "1px solid gold",
+    borderRadius: 4,
     backgroundColor: "#000",
     color: "#fff",
+    textAlign: "left",
+    verticalAlign: "top",
   },
 }));
 
@@ -94,7 +98,7 @@ export default function TransferList(props) {
     setChecked(not(checked, leftChecked));
 
     let amount = 0;
-    let fire = 0;
+    // let fire = 0;
     let mag = 0;
     let stam = 0;
     let damage = 0;
@@ -106,9 +110,9 @@ export default function TransferList(props) {
       if (item.type === "weapon") {
         damage += item.damage;
       }
-      if (item.effect === "fire") {
-        fire += item.bonus;
-      }
+      // if (item.effect === "fire") {
+      //   fire += item.bonus;
+      // }
       if (item.effect === "magicka") {
         mag += item.bonus;
       }
@@ -128,7 +132,7 @@ export default function TransferList(props) {
     setChecked(not(checked, rightChecked));
 
     let amount = 0;
-    let fire = 0;
+    // let fire = 0;
     let mag = 0;
     let stam = 0;
     let damage = 0;
@@ -140,9 +144,9 @@ export default function TransferList(props) {
       if (item.type === "weapon") {
         damage += item.damage;
       }
-      if (item.effect === "fire") {
-        fire += item.bonus;
-      }
+      // if (item.effect === "fire") {
+      //   fire += item.bonus;
+      // }
       if (item.effect === "magicka") {
         mag += item.bonus;
       }
@@ -158,19 +162,19 @@ export default function TransferList(props) {
 
   const printBaseItem = (obj) => {
     if (obj.weight) {
-      return `${obj.style} ${obj.weight} ${obj.title}`;
+      return `${obj.style} ${obj.title} of ${obj.effect}`;
     } else {
       return `${obj.style} ${obj.title}`;
     }
   };
 
-  const printQuality = (obj) => {
-    return `quality: ${obj.quality}`;
-  };
-
   const printStats = (obj) => {
     if (obj.type === "weapon") {
-      return `${obj.damage} damage`;
+      if (obj.effect === "fire") {
+        return `+ ${obj.bonus} ${obj.effect} damage, `;
+      } else {
+        return `+ ${obj.damage} damage`;
+      }
     } else {
       return `${obj.effect} + ${obj.bonus}`;
     }
@@ -209,8 +213,19 @@ export default function TransferList(props) {
                 )}
                 {obj.quality === "common" && printBaseItem(obj)}
               </h3>
-              <p className={classes.header}>{printQuality(obj)}</p>
-              <p className={classes.header}>{printStats(obj)}</p>
+              {checked.indexOf(obj) !== -1 && (
+                <div>
+                  <p className={classes.header}>{printStats(obj)}</p>
+                  <p className={classes.header}>
+                    {obj.gold}{" "}
+                    <img
+                      className="icon-coin"
+                      src="gold_coin.png"
+                      alt="gold coin"
+                    />
+                  </p>
+                </div>
+              )}
             </ListItem>
           );
         })}
@@ -228,6 +243,7 @@ export default function TransferList(props) {
       <Grid item>
         <Grid container direction="column">
           <Button
+            color="primary"
             className={classes.button}
             onClick={onEquipItem}
             disabled={leftChecked.length === 0}

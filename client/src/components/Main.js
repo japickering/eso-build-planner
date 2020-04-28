@@ -57,7 +57,7 @@ export default function Main(props) {
 
   const classes = useStyles();
   const [level, setLevel] = useState(1);
-  const [health, setValue] = useState(props.max);
+  const [health, setHealth] = useState(props.max);
   const [magicka, setMag] = useState(0);
   const [stamina, setStam] = useState(0);
   const [armour, setArmour] = useState(0);
@@ -145,7 +145,7 @@ export default function Main(props) {
     setLevel(event.target.value === "" ? "" : Number(event.target.value));
   };
   const onHealthInputChange = (event) => {
-    setValue(event.target.value === "" ? "" : Number(event.target.value));
+    setHealth(event.target.value === "" ? "" : Number(event.target.value));
   };
   const onMagInputChange = (event) => {
     setMag(event.target.value === "" ? "" : Number(event.target.value));
@@ -169,12 +169,12 @@ export default function Main(props) {
   const onHealthSliderChange = (event, health) => {
     const max = props.max;
     if (health <= 0) {
-      setValue(0);
+      setHealth(0);
     } else if (health > max) {
       health = max;
-      setValue(health);
+      setHealth(health);
     } else {
-      setValue(health);
+      setHealth(health);
     }
   };
 
