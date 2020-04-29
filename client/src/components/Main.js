@@ -256,6 +256,8 @@ export default function Main(props) {
         <CardContent className={classes.content}>
           <h3>Inventory</h3>
           <TransferList
+            gear={props.gear}
+            weapons={props.weapons}
             onArmourBoost={onArmourBoost}
             onArmourWeaken={onArmourWeaken}
             onMagBoost={onMagBoost}
@@ -264,9 +266,6 @@ export default function Main(props) {
             onStamWeaken={onStamWeaken}
             onWeaponDamageBoost={onWeaponDamageBoost}
             onWeaponDamageWeaken={onWeaponDamageWeaken}
-            onDam
-            gear={props.gear}
-            weapons={props.weapons}
           />
         </CardContent>
       </Card>

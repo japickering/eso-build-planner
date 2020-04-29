@@ -72,7 +72,7 @@ export default function TransferList(props) {
   const leftChecked = intersection(checked, left);
   const rightChecked = intersection(checked, right);
 
-  const handleToggle = (obj) => () => {
+  const onToggle = (obj) => () => {
     const currentIndex = checked.indexOf(obj);
     const newChecked = [...checked];
     if (currentIndex === -1) {
@@ -188,7 +188,7 @@ export default function TransferList(props) {
 
   const itemsList = (items) => (
     <Paper className={classes.paper}>
-      <List className={classes.list} dense component="div" role="list">
+      <List className={classes.list} component="div" role="list">
         {items.map((obj) => {
           return (
             <ListItem
@@ -200,7 +200,7 @@ export default function TransferList(props) {
               }
               role="list item"
               button
-              onClick={handleToggle(obj)}
+              onClick={onToggle(obj)}
             >
               <img
                 className={classes.icon}
