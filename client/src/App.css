@@ -106,3 +106,35 @@ img {
   padding: 0;
   text-align: left;
 }
+
+.loading {
+  flex-direction: row;
+  margin-top: 1%;
+  margin-left: 1%;
+  padding-top: 1em;
+  width: 5em;
+  height: 5em;
+  background-color: #005500;
+  border: 1px solid;
+  border-radius: 50%;
+  color: #fff;
+  font-size: small;
+  text-align: center;
+  animation: spinner 1.5s infinite ease;
+  animation-delay: .5s;
+}
+
+@keyframes spinner {
+  0% {
+    background-color: #004400;
+    transform: rotate(0deg);
+  }
+  50% {
+    background-color: #007700;
+    transform: rotate(180deg);
+  }
+  100% {
+    background-color: #004400;
+    transform: rotate(360deg);
+  }
+}

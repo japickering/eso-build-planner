@@ -28,7 +28,7 @@ export default class App extends Component {
 
   render() {
     const { loading } = this.state;
-    if (loading) return <div>Loading..</div>;
+    if (loading) return <div className="loading">Loading..</div>;
 
     return (
       <div className="App">
@@ -37,9 +37,7 @@ export default class App extends Component {
         </header>
         <div className="container">
           <p>Results found..</p>
-          {this.state.response !== "" && (
-            <Main {...this.state.response[0]} />
-          )}
+          {this.state.response !== "" && <Main {...this.state.response[0]} />}
         </div>
       </div>
     );
