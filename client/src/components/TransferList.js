@@ -98,7 +98,6 @@ export default function TransferList(props) {
     setChecked(not(checked, leftChecked));
 
     let amount = 0;
-    // let fire = 0;
     let mag = 0;
     let stam = 0;
     let damage = 0;
@@ -110,9 +109,6 @@ export default function TransferList(props) {
       if (item.type === "weapon") {
         damage += item.damage;
       }
-      // if (item.effect === "fire") {
-      //   fire += item.bonus;
-      // }
       if (item.effect === "magicka") {
         mag += item.bonus;
       }
@@ -132,7 +128,6 @@ export default function TransferList(props) {
     setChecked(not(checked, rightChecked));
 
     let amount = 0;
-    // let fire = 0;
     let mag = 0;
     let stam = 0;
     let damage = 0;
@@ -144,9 +139,6 @@ export default function TransferList(props) {
       if (item.type === "weapon") {
         damage += item.damage;
       }
-      // if (item.effect === "fire") {
-      //   fire += item.bonus;
-      // }
       if (item.effect === "magicka") {
         mag += item.bonus;
       }
@@ -160,11 +152,25 @@ export default function TransferList(props) {
     props.onWeaponDamageWeaken(damage);
   };
 
-  const printBaseItem = (obj) => {
+  const getTitle = (obj) => {
     if (obj.weight) {
-      return `${obj.style} ${obj.title} of ${obj.effect}`;
+      return `${obj.style} ${obj.weight} ${obj.title} of ${obj.effect}`;
     } else {
       return `${obj.style} ${obj.title}`;
+    }
+  };
+
+  const printTitleByQuality = (obj) => {
+    if (obj.quality === "legendary") {
+      return <span style={{ color: "gold" }}>{getTitle(obj)}</span>;
+    } else if (obj.quality === "epic") {
+      return <span style={{ color: "#ff00ff" }}>{getTitle(obj)}</span>;
+    } else if (obj.quality === "rare") {
+      return <span style={{ color: "#00AAFF" }}>{getTitle(obj)}</span>;
+    } else if (obj.quality === "uncommon") {
+      return <span style={{ color: "#00ff00" }}>{getTitle(obj)}</span>;
+    } else {
+      return getTitle(obj);
     }
   };
 
@@ -201,29 +207,10 @@ export default function TransferList(props) {
                 src={obj.image}
                 alt={`${obj.title} icon`}
               />
-              <h3 className={classes.header}>
-                {obj.quality === "epic" && (
-                  <span style={{ color: "#ff00ff" }}>{printBaseItem(obj)}</span>
-                )}
-                {obj.quality === "rare" && (
-                  <span style={{ color: "#00AAFF" }}>{printBaseItem(obj)}</span>
-                )}
-                {obj.quality === "uncommon" && (
-                  <span style={{ color: "#00ff00" }}>{printBaseItem(obj)}</span>
-                )}
-                {obj.quality === "common" && printBaseItem(obj)}
-              </h3>
+              <h3 className={classes.header}>{printTitleByQuality(obj)}</h3>
               {checked.indexOf(obj) !== -1 && (
                 <div>
                   <p className={classes.header}>{printStats(obj)}</p>
-                  <p className={classes.header}>
-                    {obj.gold}{" "}
-                    <img
-                      className="icon-coin"
-                      src="gold_coin.png"
-                      alt="gold coin"
-                    />
-                  </p>
                 </div>
               )}
             </ListItem>
