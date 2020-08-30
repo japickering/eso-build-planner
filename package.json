@@ -2,8 +2,16 @@
   "name": "eso-build-planner",
   "version": "1.0.0",
   "author": "James A Pickering",
-  "description": "ESO Build planner",
-  "keywords": [],
+  "description": "The Unofficial Elder Scrolls Online - Character Build Planner",
+  "keywords": [
+    "javascript",
+    "reactjs",
+    "eso",
+    "elder scrolls",
+    "character",
+    "builder",
+    "planner"
+  ],
   "scripts": {
     "client": "cd client && yarn start",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
@@ -11,7 +19,7 @@
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
-  "license": "ISC",
+  "license": "Non Commercial",
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
